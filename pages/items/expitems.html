@@ -1,0 +1,42 @@
+<!-- Data Display Script-->
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        $('#expitemstable').DataTable({
+            ajax: "sourcedata/items/expitems.json",
+            bFilter: false,
+            paging: false,
+            info: false,
+            columns: [
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<img src="assets/item/experience/' + data[0] + '.png" width="50px" style="padding:5px; padding-right:10px""/> ';
+                    }
+                },
+                { data: 1 }
+            ]
+        });
+    });
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#experience" style="color: #333">
+            <h4 class="panel-title">
+                <img src="assets/item/experience/expitem01_M.png" width="25px" height="25px"> Experience
+            </h4>
+        </a>
+    </div>
+    <div id="experience" class="panel-collapse collapse">
+        <div class="panel-body">
+            <table id="expitemstable" class="table-borderless" style="font-size: 16px">
+                <thead>
+                    <tr style="display:none">
+                        <th>Item</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>

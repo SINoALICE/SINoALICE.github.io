@@ -1,0 +1,42 @@
+<!-- Data Display Script-->
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        $('#puzzleitemstable').DataTable({
+            ajax: "sourcedata/items/puzzleitems.json",
+            bFilter: false,
+            paging: false,
+            info: false,
+            columns: [
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<img src="assets/item/puzzle/' + data[0] + '.png" width="50px" style="padding:5px; padding-right:10px"/> ';
+                    }
+                },
+                { data: 1 }
+            ]
+        });
+    });
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#puzzles" style="color: #333">
+            <h4 class="panel-title">
+                <img src="assets/item/puzzle/puzzle_item_chest_M.png" width="25px" height="25px"> Puzzles
+            </h4>
+        </a>
+    </div>
+    <div id="puzzles" class="panel-collapse collapse">
+        <div class="panel-body">
+            <table id="puzzleitemstable" class="table-borderless" style="font-size: 16px">
+                <thead>
+                    <tr style="display:none">
+                        <th>Item</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>

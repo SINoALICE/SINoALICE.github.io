@@ -1,0 +1,11 @@
+{
+    "data": [
+        ["free_puc_gem_M","Currency for Scenes and Puzzles"],
+        ["free_puc_coin_M","Currency for Scenes and Experience"],
+        ["heart_M","Stamina"],
+        ["ev_collect_01_watagashi_M","Event Currency"],
+        ["ev_collect_01_wakka_M","Event Currency"],
+        ["ev_minimap_01_pumpkin_M","Event Currency"],
+        ["ev_minimap_01_sweets_M","Event Currency"]
+    ]
+}

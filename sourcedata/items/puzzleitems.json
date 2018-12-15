@@ -1,0 +1,10 @@
+{
+    "data": [
+        ["puzzle_item_score_M","Final score increased by 10%"],
+        ["puzzle_item_combo_M","Combo times increased by 5 seconds"],
+        ["puzzle_item_time_M","Play time increased by 5 seconds"],
+        ["puzzle_item_chest_M","2 Chests spawn at the start"],
+        ["puzzle_item_intimacy_M","Increase Affection gain"],
+        ["puzzle_item_kind_M","Amount of PucPucs decreased by 1 (5 to 4)"]
+    ]
+}

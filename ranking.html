@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="img/ico" href="assets/ui/favicon.png">
+
+    <title>Ranking</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
+    <!-- Navigation Bar Script-->
+    <script> 
+        $(function () {
+            $("#navigationbar").load("pages/navbar.html");
+        });
+    </script>
+
+    <!-- Data Display Script-->
+    <script type="text/javascript" class="init">
+        $(document).ready(function () {
+            $('#ranking').DataTable({
+                ajax: "sourcedata/ranking.json",
+                bFilter: false,
+                paging: false,
+                info: false,
+                ordering: false,
+                scrollX: true,
+                columns: [
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<div style="font-weight: bold;">' + data[0] + '</div>';
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<li><img src="assets/ranking/reward/' + data[1] + '.png" width="25px"/> ' + data[2] + 'x</li>' +
+                                '<li><img src="assets/ranking/reward/' + data[3] + '.png" width="25px"/> ' + data[4] + 'x</li>' +
+                                '<li><img src="assets/ranking/reward/' + data[5] + '.png" width="25px"/> ' + data[6] + 'x</li>';
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<li><img src="assets/ranking/reward/' + data[7] + '.png" width="25px"/> ' + data[8] + 'x</li>' +
+                                '<li><img src="assets/ranking/reward/' + data[9] + '.png" width="25px"/> ' + data[10] + 'x</li>';
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<li><img src="assets/ranking/reward/' + data[11] + '.png" width="25px"/> ' + data[12] + 'x</li>';
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<li><img src="assets/ranking/reward/' + data[13] + '.png" width="25px"/> ' + data[14] + 'x</li>' +
+                                '<li><img src="assets/ranking/reward/' + data[15] + '.png" width="25px"/> ' + data[16] + 'x</li>';
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<li><img src="assets/ranking/reward/' + data[17] + '.png" width="25px"/> ' + data[18] + 'x</li>' +
+                                '<li><img src="assets/ranking/reward/' + data[19] + '.png" width="25px"/> ' + data[20] + 'x</li>';
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<li><img src="assets/ranking/reward/' + data[21] + '.png" width="25px"/> ' + data[22] + 'x</li>';
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <div id="navigationbar"></div>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Ranking</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table id="ranking" width="100%" class="table table-striped table-bordered table-hover" style="font-size: 16px;">
+                                <thead>
+                                    <tr>
+                                        <th width="16%"></th>
+                                        <th width="42%" colspan="3" style="text-align: center;">
+                                            Pick Up Units
+                                        </th>
+                                        <th width="42%" colspan="3" style="text-align: center;">
+                                            None Pick Up Units
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th width="16%" style="text-align: center;">Rank \ Class</th>
+                                        <th width="14%" style="text-align: center;"><img src="assets/ranking/class/class_S.png" width="25"></th>
+                                        <th width="14%" style="text-align: center;"><img src="assets/ranking/class/class_A.png" width="25"></th>
+                                        <th width="14%" style="text-align: center;"><img src="assets/ranking/class/class_B.png" width="25"></th>
+                                        <th width="14%" style="text-align: center;"><img src="assets/ranking/class/class_S.png" width="25"></th>
+                                        <th width="14%" style="text-align: center;"><img src="assets/ranking/class/class_A.png" width="25"></th>
+                                        <th width="14%" style="text-align: center;"><img src="assets/ranking/class/class_B.png" width="25"></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

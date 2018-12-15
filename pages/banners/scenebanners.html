@@ -1,0 +1,40 @@
+<!-- Data Display Script-->
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        $('#scenenannerstable').DataTable({
+            ajax: "sourcedata/banners/scenebanners.json",
+            bFilter: false,
+            paging: false,
+            info: false,
+            columns: [
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<img src="assets/banner/scene/' + data[0] + '.png" width="100%" style="padding:5px;"/> ';
+                    }
+                }
+            ]
+        });
+    });
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#scene" style="color: #333">
+            <h4 class="panel-title">
+                <img src="assets/ui/ticketscene.png" width="25px" height="25px"> Scene
+            </h4>
+        </a>
+    </div>
+    <div id="scene" class="panel-collapse collapse">
+        <div class="panel-body">
+            <table id="scenenannerstable" class="table-borderless">
+                <thead>
+                    <tr style="display:none">
+                        <th>Image</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>

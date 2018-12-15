@@ -1,0 +1,17 @@
+1. Datamining
+1.1. go to storage/emulated/legacy/android/data/
+1.2. copy folder com.aniplex.monogataripucpuc 
+1.3. paste to mnt/shared/other
+1.4. find path on pc via the "File Transfer" action
+1.5. use AssetStudio to get images from files
+
+2. Scene Manupulation
+2.1. Crop
+2.1.1. go to https://birme.net/
+2.1.2. cut images to 1200x745 without auto detect
+2.1.3. save as zip
+2.2. Rezise
+2.2.1. go to https://bulkresizephotos.com/
+2.2.2. set to pro
+2.2.3. set to Resize = 50%
+2.2.4. save as .png

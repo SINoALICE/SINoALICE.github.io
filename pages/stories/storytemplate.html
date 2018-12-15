@@ -1,0 +1,83 @@
+<!-- Data Display Script-->
+<script type="text/javascript" class="init">
+    $(document).ready(function () {
+        $('#hitagicrab01table').DataTable({
+            ajax: "sourcedata/stories/story01hitagicrab/story01hitagicrab01.json",
+            bFilter: false,
+            paging: false,
+            info: false,
+            ordering: false,
+            scrollX: true,
+            columns: [
+                { data: 0 },
+                { data: 1 },
+                { data: 2 },
+                { data: 3 },
+                { data: 4 },
+            ]
+        });
+    });
+</script>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#hitagicrab" style="color: #333">
+            <h4 class="panel-title">
+                <img src="assets/story/boss/omoshikani01.png" width="25px" height="25px"> Hitagi Crab
+            </h4>
+        </a>
+    </div>
+    <div id="hitagicrab" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="panel-group" id="hitagicrabaccordion">
+
+                <div class="panel-body">
+                    <table id="story01hitagicrabtable" class="table" style="font-size: 16px; text-align: center">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">Stage</th>
+                                <th style="text-align: center">Objective</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#hitagicrabaccordion" href="#hitagicrab01" style="color: #333">
+                            <h4 class="panel-title">
+                                Area 1
+                            </h4>
+                        </a>
+                    </div>
+                    <div id="hitagicrab01" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table id="hitagicrab01table" class="table table-responsive" style="font-size: 16px; text-align: center">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center">Stage</th>
+                                        <th style="text-align: center">Objective</th>
+                                        <th style="text-align: center">
+                                            <img src="assets/ui/star.png" width="25px" height="25px">
+                                        </th>
+                                        <th style="text-align: center">
+                                            <img src="assets/ui/star.png" width="25px" height="25px">
+                                            <img src="assets/ui/star.png" width="25px" height="25px">
+                                        </th>
+                                        <th style="text-align: center">
+                                            <img src="assets/ui/star.png" width="25px" height="25px">
+                                            <img src="assets/ui/star.png" width="25px" height="25px">
+                                            <img src="assets/ui/star.png" width="25px" height="25px">
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
