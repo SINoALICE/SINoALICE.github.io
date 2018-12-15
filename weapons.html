@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="img/ico" href="assets/ui/favicon.png">
+
+    <title>Weapons</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
+    <!-- Navigation Bar Script-->
+    <script>
+        $(function () {
+            $("#navigationbar").load("navbar.html");
+        });
+    </script>
+
+    <!-- Data Display Script-->
+    <script type="text/javascript" class="init">
+        $(document).ready(function () {
+            $('#weapons').DataTable({
+                ajax: "jsonfiles/weapons.json",
+                pageLength: 25,
+                columns: [
+                    { data: 0 },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<img src="assets/weapons/CardS' + data[0] + '.png" class="weaponimage"/>';
+                        }
+                    },
+                    { data: 1 },
+                    { data: 2 },
+                    { data: 3 },
+                    { data: 4 },
+                    { data: 5 }
+                ]
+            },
+                $('#all').on('click', function () {
+                    $('#weapons').DataTable().column(2).search("").draw();
+                }),
+
+                $('#tome').on('click', function () {
+                    $('#weapons').DataTable().column(2).search("Tome").draw();
+                }),
+
+                $('#staff').on('click', function () {
+                    $('#weapons').DataTable().column(2).search("Staff").draw();
+                }),
+            );
+        });
+    </script>
+
+    <style type="text/css">
+        .weaponimage {
+            width: 60px;
+
+            display: block;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body background="assets/ui/background.png">
+
+    <div id="wrapper">
+
+        <div id="navigationbar"></div>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Weapons</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table id="weapons" width="100%" class="table table-bordered" style="font-size: 16px;">
+                                <div class="container">
+                                    <label id='all' class="button">
+                                        <input type='submit' class='btn btn-primary' name='all' value='All'>
+                                    </label>
+
+                                    <label id="tome" class="button">
+                                        <input type="image" src="assets/ui/tome.png" name="tome">
+                                    </label>
+
+                                    <label id="staff" class="button">
+                                        <input type="image" src="assets/ui/staff.png" name="staff">
+                                    </label>
+                                </div>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Weapon</th>
+                                        <th>Class</th>
+                                        <th>Rank</th>
+                                        <th>Max Level</th>
+                                        <th>ATK Level 1</th>
+                                        <th>ATK Max Level</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
