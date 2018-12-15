@@ -49,6 +49,11 @@
     <!-- Custom Theme JavaScript -->
     <script src="dist/js/sb-admin-2.js"></script>
 
+    <!-- DataTable Checkbox StateSave-->
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css"
+        rel="stylesheet" />
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+
     <!-- Navigation Bar Script-->
     <script>
         $(function () {
@@ -63,6 +68,12 @@
                 ajax: "jsonfiles/weapons.json",
                 pageLength: 25,
                 columns: [
+                    {
+                        targets: 2,
+                        checkboxes: {
+                            selectRow: false
+                        }
+                    },
                     { data: 0 },
                     {
                         data: null,
@@ -75,20 +86,27 @@
                     { data: 3 },
                     { data: 4 },
                     { data: 5 }
-                ]
+                ],
+                stateSave: true
             },
                 $('#all').on('click', function () {
-                    $('#weapons').DataTable().column(2).search("").draw();
+                    $('#weapons').DataTable().column(3).search("").draw();
                 }),
 
                 $('#tome').on('click', function () {
-                    $('#weapons').DataTable().column(2).search("Tome").draw();
+                    $('#weapons').DataTable().column(3).search("Tome").draw();
                 }),
 
                 $('#staff').on('click', function () {
-                    $('#weapons').DataTable().column(2).search("Staff").draw();
+                    $('#weapons').DataTable().column(3).search("Staff").draw();
                 }),
+
             );
+
+            
+            if (window.location.href.indexOf('#myModal') != -1) {
+                $('#myModal').modal('show');
+            }
         });
     </script>
 
@@ -101,6 +119,24 @@
         }
     </style>
 
+    <style type="text/css">
+        .modaltitle {
+            font-size: 14px;
+            padding-bottom: 5px;
+            font-weight: bold;
+            width: 50%;
+        }
+
+        .modaldata {
+            font-size: 14px;
+            padding-bottom: 5px;
+            width: 50%;
+        }
+
+        .modalimage {
+            width: 60px;
+        }
+    </style>
 </head>
 
 <body background="assets/ui/background.png">
@@ -135,6 +171,7 @@
                                 </div>
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>ID</th>
                                         <th>Weapon</th>
                                         <th>Class</th>

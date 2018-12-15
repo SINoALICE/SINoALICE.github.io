@@ -4655,7 +4655,6 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar-default {
-    background-color: #f8f8f8;
     border-color: #e7e7e7
 }
 
@@ -5636,7 +5635,7 @@ a.list-group-item-danger.active, a.list-group-item-danger.active:focus, a.list-g
 
 .panel {
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: transparent;
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
