@@ -84,14 +84,17 @@
                     { data: 1 },
                     { data: 2 },
                     {
-                        data: 3,
-                        searchable: true
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<img src="assets/ui/' + data[3] + '.png" class="elementimage"/>' + 
+                                   '<span style="display:none;">' + data[3] + '</span>';
+                        }
                     },
                     { data: 4 },
                     { data: 5 },
                     { data: 6 }
                 ],
-                //stateSave: true
+                stateSave: true
             },
                 $('#all').on('click', function () {
                     $('#weapons').DataTable().columns().search("").draw();
@@ -138,6 +141,13 @@
             display: block;
             margin: auto;
         }
+
+        .filterimage {
+            width: 30px;
+
+            display: block;
+            margin: auto;
+        }
     </style>
 </head>
 
@@ -164,23 +174,23 @@
                                     </label>
 
                                     <label id="tome" class="button">
-                                        <input type="image" src="assets/ui/tome.png" name="tome">
+                                        <input type="image" src="assets/ui/tome.png" class="filterimage" name="tome">
                                     </label>
 
                                     <label id="staff" class="button">
-                                        <input type="image" src="assets/ui/staff.png" name="staff">
+                                        <input type="image" src="assets/ui/staff.png" class="filterimage" name="staff">
                                     </label>
 
                                     <label id="fire" class="button">
-                                        <input type="image" src="assets/ui/fire.png" name="fire">
+                                        <input type="image" src="assets/ui/fire.png" class="filterimage" name="fire">
                                     </label>
 
                                     <label id="wind" class="button">
-                                        <input type="image" src="assets/ui/wind.png" name="wind">
+                                        <input type="image" src="assets/ui/wind.png" class="filterimage" name="wind">
                                     </label>
 
                                     <label id="water" class="button">
-                                        <input type="image" src="assets/ui/water.png" name="water">
+                                        <input type="image" src="assets/ui/water.png" class="filterimage" name="water">
                                     </label>
                                 </div>
                                 <thead>
