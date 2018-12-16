@@ -138,7 +138,7 @@
                     {
                         targets: 0,
                         checkboxes: {
-                            selectRow: false
+                            selectRow: true
                         }
                     },
                     { data: 0 },
@@ -374,9 +374,15 @@
             margin: auto;
         }
 
-        .elementimage,
-        .rankimage {
+        .elementimage {
             width: 25px;
+
+            display: block;
+            margin: auto;
+        }
+
+        .rankimage {
+            width: 30px;
 
             display: block;
             margin: auto;
@@ -409,7 +415,7 @@
                         <div class="panel-body">
                             <table id="weapons" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <div class="container">
-                                    
+
                                     <!-- Filter Type -->
                                     <label id="typecrystal" class="button">
                                         <input type="image" src="assets/ui/typecrystal.png" class="filterimage" name="typecrystal">
