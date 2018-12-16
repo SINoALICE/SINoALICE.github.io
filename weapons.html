@@ -82,42 +82,98 @@
                         }
                     },
                     { data: 1 },
-                    { data: 2 },
+                    { 
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<img src="assets/ui/type' + data[2] + '.png" class="elementimage"/>' +
+                                '<span style="display:none;">' + data[2] + '</span>';
+                        }
+                    },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/' + data[3] + '.png" class="elementimage"/>' + 
-                                   '<span style="display:none;">' + data[3] + '</span>';
+                            return '<img src="assets/ui/element' + data[3] + '.png" class="elementimage"/>' +
+                                '<span style="display:none;">' + data[3] + '</span>';
                         }
                     },
-                    { data: 4 },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<img src="assets/ui/rank' + data[4] + '.png" class="rankimage"/>' +
+                                '<span style="display:none;">' + data[4] + '</span>';
+                        }
+                    },
                     { data: 5 },
                     { data: 6 }
                 ],
                 stateSave: true
             },
+                // Remove Filter
                 $('#all').on('click', function () {
                     $('#weapons').DataTable().columns().search("").draw();
                 }),
 
-                $('#tome').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("Tome").draw();
+                // Filter Type
+                $('#typecrystal').on('click', function () {
+                    $('#weapons').DataTable().column(4).search("crystal").draw();
                 }),
 
-                $('#staff').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("Staff").draw();
+                $('#typehammer').on('click', function () {
+                    $('#weapons').DataTable().column(4).search("hammer").draw();
                 }),
 
-                $('#fire').on('click', function () {
+                $('#typeinstrument').on('click', function () {
+                    $('#weapons').DataTable().column(4).search("instrument").draw();
+                }),
+
+                $('#typeranged').on('click', function () {
+                    $('#weapons').DataTable().column(4).search("ranged").draw();
+                }),
+
+                $('#typespear').on('click', function () {
+                    $('#weapons').DataTable().column(4).search("spear").draw();
+                }),
+
+                $('#typestaff').on('click', function () {
+                    $('#weapons').DataTable().column(4).search("staff").draw();
+                }),
+
+                $('#typesword').on('click', function () {
+                    $('#weapons').DataTable().column(4).search("sword").draw();
+                }),
+
+                $('#typetome').on('click', function () {
+                    $('#weapons').DataTable().column(4).search("tome").draw();
+                }),
+
+                // Filter Element
+                $('#elementfire').on('click', function () {
                     $('#weapons').DataTable().column(5).search("Fire").draw();
                 }),
 
-                $('#wind').on('click', function () {
+                $('#elementwind').on('click', function () {
                     $('#weapons').DataTable().column(5).search("Wind").draw();
                 }),
 
-                $('#water').on('click', function () {
+                $('#elementwater').on('click', function () {
                     $('#weapons').DataTable().column(5).search("Water").draw();
+                }),
+
+                // Filter Ranking
+                $('#ranka').on('click', function () {
+                    $('#weapons').DataTable().column(6).search("^A$", true, false).draw();
+                }),
+
+                $('#ranks').on('click', function () {
+                    $('#weapons').DataTable().column(6).search("^S$", true, false).draw();
+                }),
+
+                $('#rankss').on('click', function () {
+                    $('#weapons').DataTable().column(6).search("^SS$", true, false).draw();
+                }),
+
+                $('#rankl').on('click', function () {
+                    $('#weapons').DataTable().column(6).search("^L$", true, false).draw();
                 }),
             );
 
@@ -135,7 +191,8 @@
             margin: auto;
         }
 
-        .elementimage {
+        .elementimage,
+        .rankimage {
             width: 25px;
 
             display: block;
@@ -169,28 +226,72 @@
                         <div class="panel-body">
                             <table id="weapons" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <div class="container">
+                                    <!-- Remove Filter -->
                                     <label id='all' class="button">
                                         <input type='submit' class='btn btn-primary' name='all' value='All'>
                                     </label>
 
-                                    <label id="tome" class="button">
-                                        <input type="image" src="assets/ui/tome.png" class="filterimage" name="tome">
+                                    <!-- Filter Type -->
+                                    <label id="typecrystal" class="button">
+                                        <input type="image" src="assets/ui/typecrystal.png" class="filterimage" name="typecrystal">
                                     </label>
 
-                                    <label id="staff" class="button">
-                                        <input type="image" src="assets/ui/staff.png" class="filterimage" name="staff">
+                                    <label id="typehammer" class="button">
+                                        <input type="image" src="assets/ui/typehammer.png" class="filterimage" name="typehammer">
                                     </label>
 
-                                    <label id="fire" class="button">
-                                        <input type="image" src="assets/ui/fire.png" class="filterimage" name="fire">
+                                    <label id="typeinstrument" class="button">
+                                        <input type="image" src="assets/ui/typeinstrument.png" class="filterimage" name="typeinstrument">
                                     </label>
 
-                                    <label id="wind" class="button">
-                                        <input type="image" src="assets/ui/wind.png" class="filterimage" name="wind">
+                                    <label id="typeranged" class="button">
+                                        <input type="image" src="assets/ui/typeranged.png" class="filterimage" name="typeranged">
                                     </label>
 
-                                    <label id="water" class="button">
-                                        <input type="image" src="assets/ui/water.png" class="filterimage" name="water">
+                                    <label id="typespear" class="button">
+                                        <input type="image" src="assets/ui/typespear.png" class="filterimage" name="typespear">
+                                    </label>
+
+                                    <label id="typestaff" class="button">
+                                        <input type="image" src="assets/ui/typestaff.png" class="filterimage" name="typestaff">
+                                    </label>
+
+                                    <label id="typesword" class="button">
+                                        <input type="image" src="assets/ui/typesword.png" class="filterimage" name="typesword">
+                                    </label>
+
+                                    <label id="typetome" class="button">
+                                        <input type="image" src="assets/ui/typetome.png" class="filterimage" name="typetome">
+                                    </label>
+
+                                    <!-- Filter Element -->
+                                    <label id="elementfire" class="button">
+                                        <input type="image" src="assets/ui/elementfire.png" class="filterimage" name="elementfire">
+                                    </label>
+
+                                    <label id="elementwind" class="button">
+                                        <input type="image" src="assets/ui/elementwind.png" class="filterimage" name="elementwind">
+                                    </label>
+
+                                    <label id="elementwater" class="button">
+                                        <input type="image" src="assets/ui/elementwater.png" class="filterimage" name="elementwater">
+                                    </label>
+
+                                    <!-- Filter Rank -->
+                                    <label id="ranka" class="button">
+                                        <input type="image" src="assets/ui/ranka.png" class="filterimage" name="ranka">
+                                    </label>
+
+                                    <label id="ranks" class="button">
+                                        <input type="image" src="assets/ui/ranks.png" class="filterimage" name="ranks">
+                                    </label>
+
+                                    <label id="rankss" class="button">
+                                        <input type="image" src="assets/ui/rankss.png" class="filterimage" name="rankss">
+                                    </label>
+
+                                    <label id="rankl" class="button">
+                                        <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
                                     </label>
                                 </div>
                                 <thead>
