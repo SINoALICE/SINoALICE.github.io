@@ -64,6 +64,73 @@
     <!-- Data Display Script-->
     <script type="text/javascript" class="init">
         $(document).ready(function () {
+
+            var typecrystalclicked = false;
+            var typehammerclicked = false;
+            var typeinstrumentclicked = false;
+            var typerangedclicked = false;
+            var typespearclicked = false;
+            var typestaffclicked = false;
+            var typeswordclicked = false;
+            var typetomeclicked = false;
+
+            var elementfireclicked = false;
+            var elementwindclicked = false;
+            var elementwaterclicked = false;
+
+            var rankaclicked = false;
+            var ranksclicked = false;
+            var rankssclicked = false;
+            var ranklclicked = false;
+
+            function filtertype(name) {
+                $('#weapons').DataTable().column(4).search(name).draw();
+            }
+
+            function filterelement(name) {
+                $('#weapons').DataTable().column(5).search(name).draw();
+            }
+
+            function filterrank(name) {
+                $('#weapons').DataTable().column(6).search(name, true, false).draw();
+            }
+
+            function deactivatetype() {
+                $("#typecrystal").css('background', '');
+                $("#typehammer").css('background', '');
+                $("#typeinstrument").css('background', '');
+                $("#typeranged").css('background', '');
+                $("#typespear").css('background', '');
+                $("#typestaff").css('background', '');
+                $("#typesword").css('background', '');
+                $("#typetome").css('background', '');
+            }
+
+            function activatetype(currenttype) {
+                $("#type" + currenttype).css('background', 'gray');
+            }
+
+            function deactivateelement() {
+                $("#elementfire").css('background', '');
+                $("#elementwind").css('background', '');
+                $("#elementwater").css('background', '');
+            }
+
+            function activateelement(currentelement) {
+                $("#element" + currentelement).css('background', 'gray');
+            }
+
+            function deactivaterank() {
+                $("#ranka").css('background', '');
+                $("#ranks").css('background', '');
+                $("#rankss").css('background', '');
+                $("#rankl").css('background', '');
+            }
+
+            function activaterank(currentrank) {
+                $("#rank" + currentrank).css('background', 'gray');
+            }
+
             $('#weapons').DataTable({
                 ajax: "jsonfiles/weapons.json",
                 pageLength: 25,
@@ -82,7 +149,7 @@
                         }
                     },
                     { data: 1 },
-                    { 
+                    {
                         data: null,
                         render: function (data, type, row) {
                             return '<img src="assets/ui/type' + data[2] + '.png" class="elementimage"/>' +
@@ -108,72 +175,188 @@
                 ],
                 stateSave: true
             },
-                // Remove Filter
-                $('#all').on('click', function () {
-                    $('#weapons').DataTable().columns().search("").draw();
-                }),
 
                 // Filter Type
                 $('#typecrystal').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("crystal").draw();
+                    deactivatetype();
+                    if (!typecrystalclicked) {
+                        filtertype("crystal");
+                        activatetype("crystal");
+                        typecrystalclicked = true;
+                    } else {
+                        filtertype("");
+                        typecrystalclicked = false;
+                    }
                 }),
 
                 $('#typehammer').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("hammer").draw();
+                    deactivatetype();
+                    if (!typehammerclicked) {
+                        filtertype("hammer");
+                        activatetype("hammer");
+                        typehammerclicked = true;
+                    } else {
+                        filtertype("");
+                        typehammerclicked = false;
+                    }
                 }),
 
                 $('#typeinstrument').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("instrument").draw();
+                    deactivatetype();
+                    if (!typeinstrumentclicked) {
+                        filtertype("instrument");
+                        activatetype("instrument");
+                        typeinstrumentclicked = true;
+                    } else {
+                        filtertype("");
+                        typeinstrumentclicked = false;
+                    }
                 }),
 
                 $('#typeranged').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("ranged").draw();
+                    deactivatetype();
+                    if (!typerangedclicked) {
+                        filtertype("ranged");
+                        activatetype("ranged");
+                        typerangedclicked = true;
+                    } else {
+                        filtertype("");
+                        typerangedclicked = false;
+                    }
                 }),
 
                 $('#typespear').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("spear").draw();
+                    deactivatetype();
+                    if (!typespearclicked) {
+                        filtertype("spear");
+                        activatetype("spear");
+                        typespearclicked = true;
+                    } else {
+                        filtertype("");
+                        typespearclicked = false;
+                    }
                 }),
 
                 $('#typestaff').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("staff").draw();
+                    deactivatetype();
+                    if (!typestaffclicked) {
+                        filtertype("staff");
+                        activatetype("staff");
+                        typestaffclicked = true;
+                    } else {
+                        filtertype("");
+                        typestaffclicked = false;
+                    }
                 }),
 
                 $('#typesword').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("sword").draw();
+                    deactivatetype();
+                    if (!typeswordclicked) {
+                        filtertype("sword");
+                        activatetype("sword");
+                        typeswordclicked = true;
+                    } else {
+                        filtertype("");
+                        typeswordclicked = false;
+                    }
                 }),
 
                 $('#typetome').on('click', function () {
-                    $('#weapons').DataTable().column(4).search("tome").draw();
+                    deactivatetype();
+                    if (!typetomeclicked) {
+                        filtertype("tome");
+                        activatetype("tome");
+                        typetomeclicked = true;
+                    } else {
+                        filtertype("");
+                        typetomeclicked = false;
+                    }
                 }),
 
                 // Filter Element
                 $('#elementfire').on('click', function () {
-                    $('#weapons').DataTable().column(5).search("Fire").draw();
+                    deactivateelement();
+                    if (!elementfireclicked) {
+                        filterelement("fire");
+                        activateelement("fire");
+                        elementfireclicked = true;
+                    } else {
+                        filterelement("");
+                        elementfireclicked = false;
+                    }
                 }),
 
                 $('#elementwind').on('click', function () {
-                    $('#weapons').DataTable().column(5).search("Wind").draw();
+                    deactivateelement();
+                    if (!elementwindclicked) {
+                        filterelement("wind");
+                        activateelement("wind");
+                        elementwindclicked = true;
+                    } else {
+                        filterelement("");
+                        elementwindclicked = false;
+                    }
                 }),
 
                 $('#elementwater').on('click', function () {
-                    $('#weapons').DataTable().column(5).search("Water").draw();
+                    deactivateelement();
+                    if (!elementwaterclicked) {
+                        filterelement("water");
+                        activateelement("water");
+                        elementwaterclicked = true;
+                    } else {
+                        filterelement("");
+                        elementwaterclicked = false;
+                    }
                 }),
 
                 // Filter Ranking
                 $('#ranka').on('click', function () {
-                    $('#weapons').DataTable().column(6).search("^A$", true, false).draw();
+                    deactivaterank();
+                    if (!rankaclicked) {
+                        filterrank("^a$");
+                        activaterank("a");
+                        rankaclicked = true;
+                    } else {
+                        filterrank("");
+                        rankaclicked = false;
+                    }
                 }),
 
                 $('#ranks').on('click', function () {
-                    $('#weapons').DataTable().column(6).search("^S$", true, false).draw();
+                    deactivaterank();
+                    if (!ranksclicked) {
+                        filterrank("^s$");
+                        activaterank("s");
+                        ranksclicked = true;
+                    } else {
+                        filterrank("");
+                        ranksclicked = false;
+                    }
                 }),
 
                 $('#rankss').on('click', function () {
-                    $('#weapons').DataTable().column(6).search("^SS$", true, false).draw();
+                    deactivaterank();
+                    if (!rankssclicked) {
+                        filterrank("^ss$");
+                        activaterank("ss");
+                        rankssclicked = true;
+                    } else {
+                        filterrank("");
+                        rankssclicked = false;
+                    }
                 }),
 
                 $('#rankl').on('click', function () {
-                    $('#weapons').DataTable().column(6).search("^L$", true, false).draw();
+                    deactivaterank();
+                    if (!ranklclicked) {
+                        filterrank("^l$");
+                        activaterank("l");
+                        ranklclicked = true;
+                    } else {
+                        filterrank("");
+                        ranklclicked = false;
+                    }
                 }),
             );
 
@@ -226,11 +409,6 @@
                         <div class="panel-body">
                             <table id="weapons" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <div class="container">
-                                    <!-- Remove Filter -->
-                                    <label id='all' class="button">
-                                        <input type='submit' class='btn btn-primary' name='all' value='All'>
-                                    </label>
-
                                     <!-- Filter Type -->
                                     <label id="typecrystal" class="button">
                                         <input type="image" src="assets/ui/typecrystal.png" class="filterimage" name="typecrystal">
@@ -264,6 +442,8 @@
                                         <input type="image" src="assets/ui/typetome.png" class="filterimage" name="typetome">
                                     </label>
 
+                                    </br>
+
                                     <!-- Filter Element -->
                                     <label id="elementfire" class="button">
                                         <input type="image" src="assets/ui/elementfire.png" class="filterimage" name="elementfire">
@@ -276,6 +456,8 @@
                                     <label id="elementwater" class="button">
                                         <input type="image" src="assets/ui/elementwater.png" class="filterimage" name="elementwater">
                                     </label>
+
+                                    </br>
 
                                     <!-- Filter Rank -->
                                     <label id="ranka" class="button">
