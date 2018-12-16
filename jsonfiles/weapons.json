@@ -1,17 +1,15 @@
 {
     "data": [
-        ["0001","Bow","S","50","10 ATK","50 ATK"],
-        ["0002","Bow","SS","99","100 ATK","500 ATK"],
-        ["0003","Tome","S","50","10 ATK","50 ATK"],
-        ["0004","Tome","SS","99","100 ATK","500 ATK"],
-        ["0005","Staff","S","50","10 ATK","50 ATK"],
-        ["0006","Staff","SS","99","100 ATK","500 ATK"],
-        ["0007","Crystal","S","50","10 ATK","50 ATK"],
-        ["0008","Crystal","SS","99","100 ATK","500 ATK"],
-        ["0009","Crystal","S","50","10 ATK","50 ATK"],
-        ["0010","Crystal","S","50","10 ATK","50 ATK"],
-        ["0011","Crystal","S","50","10 ATK","50 ATK"],
-        ["0012","Crystal","S","50","10 ATK","50 ATK"],
-        ["0013","Crystal","S","50","10 ATK","50 ATK"]
+        ["0001","Bow of things","Bow","fire","S","13","2424"],
+        ["0002","Things of Bow","Bow","fire","SS","16","3140"],
+        ["0003","Tome of Tomes","Tome","wind","S","13","2424"],
+        ["0004","Tomey","Tome","water","SS","16","3140"],
+        ["0005","Staffy","Staff","water","S","13","2424"],
+        ["0006","Staff of Staffs","Staff","wind","SS","16","3140"],
+        ["0007","Silver Wish","Crystal","wind","S","13","2424"],
+        ["0008","Birth of a Star","Crystal","wind","SS","16","3140"],
+        ["0009","Regrets","Crystal","water","S","13","2424"],
+        ["0010","Echoes","Crystal","fire","S","13","2424"],
+        ["0011","War Hymns","Crystal","fire","S","13","2424"]
     ]
   }
