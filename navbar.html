@@ -4,20 +4,32 @@
         color: black;
         font-size: 16px;
     }
+
+    .navbar {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    /* Links inside the navbar */
+    .navbar a {
+        float: left;
+        display: block;
+        text-align: center;
+        padding-right: 15px;
+        padding-left: 15px;
+        text-decoration: none;
+    }
 </style>
 
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<nav class="navbar navbar-static-top" role="navigation" style="background-image: url(assets/ui/background.png);">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index" style="color: black">SINoALICE Database</a>
+        <div style="margin-bottom: 15px; float: left; height: 50px; padding: 15px 15px; font-size: 18px; line-height: 20px;">
 
-        <div style="float: left; height: 50px; padding: 15px 15px; font-size: 18px; line-height: 20px;">
+            <a class="navbar-brand" href="index" style="color: black">SINoALICE Database</a>
+
             <a href="characters" class="fontsetting">
                 <img src="assets/ui/menucharacter.png" width="25px" height="25px"> Characters
             </a>
@@ -33,6 +45,7 @@
             <a href="items" class="fontsetting">
                 <img src="assets/ui/menuitem.png" width="25px" height="25px"> Items
             </a>
+
         </div>
     </div>
     <!-- /.navbar-header -->
