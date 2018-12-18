@@ -406,32 +406,24 @@
             padding-top: 50px;
         }
 
-        .sidenav a {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-        }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
         .main {
             margin-left: 150px;
             padding: 50px;
         }
+
+        hr {
+            border-top: 1px solid #ababab;
+        }
     </style>
 </head>
 
-<body>
+<body style="background-image: url(assets/ui/background.png);">
     <div id="wrapper">
 
         <div id="navigationbar"></div>
 
         <div id="page-wrapper">
-            <div class="sidenav" style="text-align: center; background-image: url(assets/ui/background.png);">
+            <div class="sidenav" style="text-align: center; border-right: solid">
                 <h1 class="page-header" >Filter</h1>
                 <div class="container" style="width: 100%;">
                     <div>
@@ -471,7 +463,7 @@
                         </label>
                     </div>
 
-                    </br>
+                    <hr></hr>
 
                     <div>
                         <!-- Filter Element -->
@@ -488,7 +480,7 @@
                         </label>
                     </div>
 
-                    </br>
+                    <hr></hr>
 
                     <div>
                         <!-- Filter Rank -->
@@ -511,7 +503,7 @@
                 </div>
             </div>
 
-            <div class="main" style="background-image: url(assets/ui/background.png);">
+            <div class="main">
                 <h1 class="page-header">Weapons</h1>
                 <div class="row">
                     <div class="col-lg-10">
