@@ -185,7 +185,7 @@
                         }),
                         renderer: function (api, rowIdx, columns) {
                             var data = $.map(columns, function (col, i) {
-                                if (col.columnIndex > 4) {
+                                if (col.columnIndex > 10) {
                                     return col.hidden ?
                                         '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                                         '<td class="modaltitle">' + col.title + '</td> ' +
@@ -239,6 +239,7 @@
                             selectRow: true
                         }
                     },
+                    { data: 13 },
                     {
                         data: null,
                         render: function (data, type, row) {
@@ -481,7 +482,7 @@
                         activateskill("damage");
                         skilldamagedclicked = true;
                     } else {
-                        filterjob("");
+                        filterskill("");
                         skilldamagedclicked = false;
                     }
                 }),
@@ -703,6 +704,7 @@
                                         <th>Cost</th>
                                         <th>Max Stats</th>
                                         <th></th>
+                                        <th class="none" style="display:none;">Skill Category</th>
                                         <th class="none" style="display:none;">Story Skill</th>
                                         <th class="none" style="display:none;">Colloseum Skill</th>
                                         <th class="none" style="display:none;">Colloseum Aid Skill</th>
