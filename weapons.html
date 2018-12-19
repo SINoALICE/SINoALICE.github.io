@@ -83,16 +83,14 @@
             var rankssclicked = false;
             var ranklclicked = false;
 
+            var regionglobalclicked = false;
+
             function filtertype(name) {
                 $('#weapons').DataTable().column(4).search(name).draw();
             }
 
-            function filterelement(name) {
-                $('#weapons').DataTable().column(5).search(name).draw();
-            }
-
-            function filterrank(name) {
-                $('#weapons').DataTable().column(6).search(name, true, false).draw();
+            function activatetype(currenttype) {
+                $("#type" + currenttype).css('background', 'gray');
             }
 
             function deactivatetype() {
@@ -106,8 +104,12 @@
                 $("#typetome").css('background', '');
             }
 
-            function activatetype(currenttype) {
-                $("#type" + currenttype).css('background', 'gray');
+            function filterelement(name) {
+                $('#weapons').DataTable().column(5).search(name).draw();
+            }
+
+            function activateelement(currentelement) {
+                $("#element" + currentelement).css('background', 'gray');
             }
 
             function deactivateelement() {
@@ -116,8 +118,12 @@
                 $("#elementwater").css('background', '');
             }
 
-            function activateelement(currentelement) {
-                $("#element" + currentelement).css('background', 'gray');
+            function filterrank(name) {
+                $('#weapons').DataTable().column(6).search(name, true, false).draw();
+            }
+
+            function activaterank(currentrank) {
+                $("#rank" + currentrank).css('background', 'gray');
             }
 
             function deactivaterank() {
@@ -127,8 +133,28 @@
                 $("#rankl").css('background', '');
             }
 
-            function activaterank(currentrank) {
-                $("#rank" + currentrank).css('background', 'gray');
+            function filterregion(name){
+                $('#weapons').DataTable().column(14).search(name).draw();
+            }
+
+            function activateregion(currentregion) {
+                $("#" + currentregion).css('background', 'gray');
+            }
+
+            function deactivateregion() {
+                $("#global").css('background', '');
+            }
+
+            function filterjob(name){
+                $('#weapons').DataTable().column(15).search(name).draw();
+            }
+
+            function activatejob(currentjob) {
+                $("#" + currentjob).css('background', 'gray');
+            }
+
+            function deactivatejob() {
+                $("#job").css('background', '');
             }
 
             $('#weapons').DataTable({
@@ -404,6 +430,32 @@
                         ranklclicked = false;
                     }
                 }),
+
+                // Filter Region
+                $('#global').on('click', function () {
+                    deactivateregion();
+                    if (!regionglobalclicked) {
+                        filterregion("Global");
+                        activateregion("Global");
+                        regionglobalclicked = true;
+                    } else {
+                        filterregion("");
+                        regionglobalclicked = false;
+                    }
+                }),
+
+                // Filter Job
+                $('#job').on('click', function () {
+                    deactivatejob();
+                    if (!jobclicked) {
+                        filterjob("Job");
+                        activatejob("Job");
+                        jobclicked = true;
+                    } else {
+                        filterjob("");
+                        jobclicked = false;
+                    }
+                }),
             );
 
             if (window.location.href.indexOf('#myModal') != -1) {
@@ -565,6 +617,36 @@
 
                         <label id="ranka" class="button">
                             <input type="image" src="assets/ui/ranka.png" class="filterimage" name="ranka">
+                        </label>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Region -->
+                        <label id="global" class="button">
+                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
+                        </label>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Job -->
+                        <label id="job" class="button">
+                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
+                        </label>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Skill -->
+                        <label id="skill" class="button">
+                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
                         </label>
                     </div>
                 </div>
