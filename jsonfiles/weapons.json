@@ -1,6 +1,6 @@
 {
     "data": [
-        ["0001","Bow of things","ranged","fire","s","13","2424","Skill A title","Skill A effect","Skill B title","Skill B effect","Skill A title","Skill A effect","Gacha","Job","Global"],
+        ["0001","Bow of things","ranged","fire","s","13","2424","Skill A title","Skill A effect","Skill B title","Skill B effect","Skill A title","Skill A effect","Gacha","Global","Job"],
         ["0002","Things of Bow","ranged","fire","ss","16","3140","","","","","","","",""],
         ["0003","Tome of Tomes","tome","wind","s","13","2424","","","","","","","",""],
         ["0004","Tomey","tome","water","a","16","3140","","","","","","","",""],
