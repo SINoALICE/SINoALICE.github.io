@@ -198,14 +198,24 @@
                             selectRow: true
                         }
                     },
-                    { data: 8 },
+                    { 
+                        data: null,
+                        render: function (data, type, row) {
+                            return data[7] + ' - ' + data[8];
+                        }
+                    },
                     { 
                         data: null,
                         render: function (data, type, row) {
                             return data[9] + ' - ' + data[10];
                         }
                     },
-                    { data: 12 },
+                    { 
+                        data: null,
+                        render: function (data, type, row) {
+                            return data[11] + ' - ' + data[12];
+                        }
+                    },
                     { data: 13 },
                     { data: 14 }
                 ],
