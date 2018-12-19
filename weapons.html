@@ -139,7 +139,7 @@
                         display: $.fn.dataTable.Responsive.display.modal({
                             header: function (row) {
                                 var data = row.data();
-                                return '<img src="assets/pucpuc/sprite/' + data[1] + '.png" class="modalimage"/> ' + 'Details for ' + data[2];
+                                return '<img src="assets/weapons/CardS' + data[0] + '.png" class="weaponimage"/> ' + 'Details for ' + data[1];
                             }
                         }),
                         renderer: function (api, rowIdx, columns) {
@@ -198,11 +198,11 @@
                     },
                     { data: 5 },
                     { data: 6 },
-                    { data: 7 },
-                    { data: 9 },
-                    { data: 11 },
+                    { data: 8 },
+                    { data: 10 },
                     { data: 12 },
-                    { data: 13 }
+                    { data: 13 },
+                    { data: 14 }
                 ],
                 stateSave: true
             },
