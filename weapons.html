@@ -147,7 +147,6 @@
             }
 
             function filterjob(name){
-                alert( $('#weapons').DataTable().column(14))
                 $('#weapons').DataTable().column(14).search(name).draw();
             }
 
@@ -245,7 +244,8 @@
                         }
                     },
                     { data: 14 },
-                    { data: 15 }
+                    { data: 15 },
+                    { data: 16 }
                 ],
                 stateSave: true
             },
