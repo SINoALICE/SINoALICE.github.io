@@ -135,7 +135,7 @@
             }
 
             function filterregion(name){
-                $('#weapons').DataTable().column(14).search(name).draw();
+                $('#weapons').DataTable().column(13).search(name).draw();
             }
 
             function activateregion(currentregion) {
@@ -147,7 +147,7 @@
             }
 
             function filterjob(name){
-                $('#weapons').DataTable().column(15).search(name).draw();
+                $('#weapons').DataTable().column(14).search(name).draw();
             }
 
             function activatejob(currentjob) {
@@ -437,7 +437,7 @@
                     deactivateregion();
                     if (!regionglobalclicked) {
                         filterregion("Global");
-                        activateregion("Global");
+                        activateregion("global");
                         regionglobalclicked = true;
                     } else {
                         filterregion("");
@@ -449,7 +449,7 @@
                 $('#job').on('click', function () {
                     deactivatejob();
                     if (!jobclicked) {
-                        filterjob("job");
+                        filterjob("Job");
                         activatejob("job");
                         jobclicked = true;
                     } else {
