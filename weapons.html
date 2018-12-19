@@ -85,6 +85,8 @@
 
             var regionglobalclicked = false;
             var jobclicked = false;
+            
+            var skilldamagedclicked = false;
 
             function filtertype(name) {
                 $('#weapons').DataTable().column(4).search(name).draw();
@@ -134,7 +136,7 @@
                 $("#rankl").css('background', '');
             }
 
-            function filterregion(name){
+            function filterregion(name) {
                 $('#weapons').DataTable().column(13).search(name).draw();
             }
 
@@ -146,7 +148,7 @@
                 $("#regionglobal").css('background', '');
             }
 
-            function filterjob(name){
+            function filterjob(name) {
                 $('#weapons').DataTable().column(14).search(name).draw();
             }
 
@@ -158,16 +160,16 @@
                 $("#job").css('background', '');
             }
 
-            function filterskill(name){
+            function filterskill(name) {
                 $('#weapons').DataTable().column(11).search(name).draw();
             }
 
-            function activatejob(currentjob) {
-                $("#" + currentjob).css('background', 'gray');
+            function activateskill(currentskill) {
+                $("#skill" + currentskill).css('background', 'red');
             }
 
-            function deactivatejob() {
-                $("#job").css('background', '');
+            function deactivateskill() {
+                $("#skilldamage").css('background', '');
             }
 
             $('#weapons').DataTable({
@@ -468,6 +470,19 @@
                     } else {
                         filterjob("");
                         jobclicked = false;
+                    }
+                }),
+
+                // Filter Skill
+                $('#skilldamage').on('click', function () {
+                    deactivateskill();
+                    if (!skilldamagedclicked) {
+                        filterskill("damage");
+                        activateskill("damage");
+                        skilldamagedclicked = true;
+                    } else {
+                        filterjob("");
+                        skilldamagedclicked = false;
                     }
                 }),
             );
