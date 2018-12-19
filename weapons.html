@@ -147,7 +147,7 @@
             }
 
             function filterjob(name){
-                $('#weapons').DataTable().column(15).search(name).draw();
+                $('#weapons').DataTable().column(14).search(name).draw();
             }
 
             function activatejob(currentjob) {
@@ -244,8 +244,7 @@
                         }
                     },
                     { data: 14 },
-                    { data: 15 },
-                    { data: 16 }
+                    { data: 15 }
                 ],
                 stateSave: true
             },
@@ -662,7 +661,6 @@
                             <table id="weapons" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <thead>
                                     <tr>
-                                        <th></th>
                                         <th>ID</th>
                                         <th>Weapon</th>
                                         <th>Name</th>
@@ -671,6 +669,7 @@
                                         <th>Rank</th>
                                         <th>Cost</th>
                                         <th>Max Stats</th>
+                                        <th></th>
                                         <th class="none" style="display:none;">Story Skill</th>
                                         <th class="none" style="display:none;">Colloseum Skill</th>
                                         <th class="none" style="display:none;">Colloseum Aid Skill</th>
