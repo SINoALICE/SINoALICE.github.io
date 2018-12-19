@@ -2,8 +2,8 @@
     "data": [
         ["0001","Bow of things","ranged","fire","s","13","2424","Skill A title","Skill A effect","Skill B title","Skill B effect","Skill C title","Skill C effect","","Gacha","Global","No"],
         ["0002","Things of Bow","ranged","fire","ss","16","3140","","","","","","damage","","","","Yes"],
-        ["0003","Tome of Tomes","tome","wind","s","13","2424","","","","","","","","","","Yes"],
-        ["0004","Tomey","tome","water","a","16","3140","","","","","","damage","","","","No"],
+        ["0003","Tome of Tomes","tome","wind","s","13","2424","","","","","","support,buff","","","","Yes"],
+        ["0004","Tomey","tome","water","a","16","3140","","","","","","damage,buff","","","","No"],
         ["0005","Staffy","staff","water","s","13","2424","","","","","","","","","","No"],
         ["0006","Staff of Staffs","staff","wind","ss","16","3140","","","","","","","","","","No"],
         ["0007","Silver Wish","crystal","wind","a","13","2424","","","","","","","","","","No"],
