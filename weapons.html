@@ -158,6 +158,18 @@
                 $("#job").css('background', '');
             }
 
+            function filterskill(name){
+                $('#weapons').DataTable().column(11).search(name).draw();
+            }
+
+            function activatejob(currentjob) {
+                $("#" + currentjob).css('background', 'gray');
+            }
+
+            function deactivatejob() {
+                $("#job").css('background', '');
+            }
+
             $('#weapons').DataTable({
                 ajax: "jsonfiles/weapons.json",
                 pageLength: 25,
@@ -491,6 +503,11 @@
             margin: auto;
         }
 
+        .filterbutton {
+            display: block;
+            margin: auto;
+        }
+
         .modaltitle {
             font-size: 14px;
             padding-bottom: 5px;
@@ -628,7 +645,7 @@
                     <div>
                         <!-- Filter Region -->
                         <label id="regionglobal" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="regionglobal">
+                            <input type="button" class="filterbutton" name="regionglobal" value="Global Gear">
                         </label>
                     </div>
 
@@ -638,7 +655,7 @@
                     <div>
                         <!-- Filter Job -->
                         <label id="job" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="job">
+                            <input type="button" class="filterbutton" name="job" value="Job Weapons">
                         </label>
                     </div>
 
@@ -647,8 +664,8 @@
 
                     <div>
                         <!-- Filter Skill -->
-                        <label id="skill" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="skill">
+                        <label id="skilldamage" class="button">
+                            <input type="button" class="filterbutton" name="skill" value="Damage Skills">
                         </label>
                     </div>
                 </div>
