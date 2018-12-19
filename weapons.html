@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=1024">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -89,7 +89,7 @@
             var skilldamagedclicked = false;
 
             function filtertype(name) {
-                $('#weapons').DataTable().column(4).search(name).draw();
+                $('#weapons').DataTable().column(3).search(name).draw();
             }
 
             function activatetype(currenttype) {
@@ -108,7 +108,7 @@
             }
 
             function filterelement(name) {
-                $('#weapons').DataTable().column(5).search(name).draw();
+                $('#weapons').DataTable().column(4).search(name).draw();
             }
 
             function activateelement(currentelement) {
@@ -122,7 +122,7 @@
             }
 
             function filterrank(name) {
-                $('#weapons').DataTable().column(6).search(name, true, false).draw();
+                $('#weapons').DataTable().column(5).search(name, true, false).draw();
             }
 
             function activaterank(currentrank) {
@@ -141,7 +141,7 @@
             }
 
             function activateregion(currentregion) {
-                $("#region" + currentregion).css('background', 'gray');
+                $("#region" + currentregion).css('background', 'red');
             }
 
             function deactivateregion() {
@@ -153,7 +153,7 @@
             }
 
             function activatejob(currentjob) {
-                $("#" + currentjob).css('background', 'gray');
+                $("#" + currentjob).css('background', 'red');
             }
 
             function deactivatejob() {
@@ -161,7 +161,7 @@
             }
 
             function filterskill(name) {
-                $('#weapons').DataTable().column(12).search(name).draw();
+                $('#weapons').DataTable().column(9).search(name).draw();
             }
 
             function activateskill(currentskill) {
@@ -520,6 +520,7 @@
         }
 
         .filterbutton {
+            width: 125px;
             display: block;
             margin: auto;
         }
