@@ -139,7 +139,7 @@
             }
 
             function activateregion(currentregion) {
-                $("#" + currentregion).css('background', 'gray');
+                $("#region" + currentregion).css('background', 'gray');
             }
 
             function deactivateregion() {
@@ -147,7 +147,7 @@
             }
 
             function filterjob(name){
-                $('#weapons').DataTable().column(14).search(name).draw();
+                $('#weapons').DataTable().column(15).search(name).draw();
             }
 
             function activatejob(currentjob) {
@@ -244,7 +244,8 @@
                         }
                     },
                     { data: 14 },
-                    { data: 15 }
+                    { data: 15 },
+                    { data: 16 }
                 ],
                 stateSave: true
             },
@@ -449,7 +450,7 @@
                 $('#job').on('click', function () {
                     deactivatejob();
                     if (!jobclicked) {
-                        filterjob("Job");
+                        filterjob("Yes");
                         activatejob("job");
                         jobclicked = true;
                     } else {
@@ -675,6 +676,7 @@
                                         <th class="none" style="display:none;">Colloseum Aid Skill</th>
                                         <th class="none" style="display:none;">Optained from</th>
                                         <th class="none" style="display:none;">Released</th>
+                                        <th class="none" style="display:none;">Job Weapon</th>
                                     </tr>
                                 </thead>
                             </table>
