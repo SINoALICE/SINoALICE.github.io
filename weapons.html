@@ -137,7 +137,7 @@
             }
 
             function filterregion(name) {
-                $('#weapons').DataTable().column(13).search(name).draw();
+                $('#weapons').DataTable().column(14).search(name).draw();
             }
 
             function activateregion(currentregion) {
@@ -149,7 +149,7 @@
             }
 
             function filterjob(name) {
-                $('#weapons').DataTable().column(14).search(name).draw();
+                $('#weapons').DataTable().column(15).search(name).draw();
             }
 
             function activatejob(currentjob) {
@@ -161,7 +161,7 @@
             }
 
             function filterskill(name) {
-                $('#weapons').DataTable().column(11).search(name).draw();
+                $('#weapons').DataTable().column(12).search(name).draw();
             }
 
             function activateskill(currentskill) {
@@ -185,7 +185,7 @@
                         }),
                         renderer: function (api, rowIdx, columns) {
                             var data = $.map(columns, function (col, i) {
-                                if (col.columnIndex > 10) {
+                                if (col.columnIndex > 9) {
                                     return col.hidden ?
                                         '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                                         '<td class="modaltitle">' + col.title + '</td> ' +
