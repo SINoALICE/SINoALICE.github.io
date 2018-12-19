@@ -139,7 +139,7 @@
                         display: $.fn.dataTable.Responsive.display.modal({
                             header: function (row) {
                                 var data = row.data();
-                                return '<img src="assets/weapons/CardS' + data[0] + '.png" class="weaponimage"/> ' + 'Details for ' + data[1];
+                                return '<img src="assets/weapons/CardS' + data[0] + '.png" class="modalimage"/> ' + 'Details for ' + data[1];
                             }
                         }),
                         renderer: function (api, rowIdx, columns) {
@@ -161,12 +161,6 @@
                     }
                 },
                 columns: [
-                    {
-                        targets: 0,
-                        checkboxes: {
-                            selectRow: true
-                        }
-                    },
                     { data: 0 },
                     {
                         data: null,
@@ -198,6 +192,12 @@
                     },
                     { data: 5 },
                     { data: 6 },
+                    {
+                        targets: 0,
+                        checkboxes: {
+                            selectRow: true
+                        }
+                    },
                     { data: 8 },
                     { data: 10 },
                     { data: 12 },
@@ -400,29 +400,42 @@
     <style type="text/css">
         .weaponimage {
             width: 60px;
-
             display: block;
             margin: auto;
         }
 
         .elementimage {
             width: 25px;
-
             display: block;
             margin: auto;
         }
 
         .rankimage {
             width: 30px;
-
             display: block;
             margin: auto;
         }
 
         .filterimage {
             width: 30px;
-
             display: block;
+            margin: auto;
+        }
+        .modaltitle {
+            font-size: 14px;
+            padding-bottom: 5px;
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .modaldata {
+            font-size: 14px;
+            padding-bottom: 5px;
+            width: 70%;
+        }
+
+        .modalimage {
+            width: 50px;
             margin: auto;
         }
 
