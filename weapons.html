@@ -84,6 +84,7 @@
             var ranklclicked = false;
 
             var regionglobalclicked = false;
+            var jobclicked = false;
 
             function filtertype(name) {
                 $('#weapons').DataTable().column(4).search(name).draw();
@@ -142,7 +143,7 @@
             }
 
             function deactivateregion() {
-                $("#global").css('background', '');
+                $("#regionglobal").css('background', '');
             }
 
             function filterjob(name){
@@ -432,11 +433,11 @@
                 }),
 
                 // Filter Region
-                $('#global').on('click', function () {
+                $('#regionglobal').on('click', function () {
                     deactivateregion();
                     if (!regionglobalclicked) {
-                        filterregion("Global");
-                        activateregion("Global");
+                        filterregion("regionglobal");
+                        activateregion("regionglobal");
                         regionglobalclicked = true;
                     } else {
                         filterregion("");
@@ -625,8 +626,8 @@
 
                     <div>
                         <!-- Filter Region -->
-                        <label id="global" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
+                        <label id="regionglobal" class="button">
+                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="regionglobal">
                         </label>
                     </div>
 
@@ -636,7 +637,7 @@
                     <div>
                         <!-- Filter Job -->
                         <label id="job" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
+                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="job">
                         </label>
                     </div>
 
@@ -646,7 +647,7 @@
                     <div>
                         <!-- Filter Skill -->
                         <label id="skill" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
+                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="skill">
                         </label>
                     </div>
                 </div>
