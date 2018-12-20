@@ -69,10 +69,14 @@
             var elementwindclicked = false;
             var elementwaterclicked = false;
 
-            var rankbclicked = false;
             var rankaclicked = false;
             var ranksclicked = false;
             var rankssclicked = false;
+            var ranklclicked = false;
+
+            var regionglobalclicked = false;
+
+            var skilldamageclicked = false;
 
             function filterelement(name) {
                 $('#nightmares').DataTable().column(3).search(name).draw();
@@ -103,6 +107,18 @@
                 $("#rankl").css('background', '');
             }
 
+            function filterregion(name) {
+                $('#nightmares').DataTable().column(10).search(name).draw();
+            }
+
+            function activateregion(currentregion) {
+                $("#region" + currentregion).css('background', 'midnightblue');
+            }
+
+            function deactivateregion() {
+                $("#regionglobal").css('background', '');
+            }
+
             function filterskill(name) {
                 $('#nightmares').DataTable().column(9).search(name).draw();
             }
@@ -118,8 +134,7 @@
             $('#nightmares').DataTable({
                 ajax: "jsonfiles/nightmares.json",
                 pageLength: 25,
-                responsive: {
-                },
+                responsive: {},
                 columns: [
                     { data: 0 },
                     {
@@ -156,8 +171,29 @@
                             return data[7] + ' - ' + data[8];
                         }
                     },
-                    { data: 9 },
-                    { data: 10 }
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            var skilltag = "";
+                            var globaltag = "";
+
+                            skilltag = data[9];
+
+                            if (data[10] == "Global") {
+                                globaltag = "; " + data[10];
+                            }
+
+                            return skilltag + globaltag;
+                        }
+                    },
+                    {
+                        data: 9, 
+                        visible: false
+                    },
+                    {
+                        data: 10, 
+                        visible: false
+                    }
                 ]
             },
 
@@ -247,16 +283,29 @@
                     }
                 }),
 
+                // Filter Region
+                $('#regionglobal').on('click', function () {
+                    deactivateregion();
+                    if (!regionglobalclicked) {
+                        filterregion("Global");
+                        activateregion("global");
+                        regionglobalclicked = true;
+                    } else {
+                        filterregion("");
+                        regionglobalclicked = false;
+                    }
+                }),
+
                 // Filter Skill
                 $('#skilldamage').on('click', function () {
                     deactivateskill();
-                    if (!skilldamagedclicked) {
+                    if (!skilldamageclicked) {
                         filterskill("damage");
                         activateskill("damage");
-                        skilldamagedclicked = true;
+                        skilldamageclicked = true;
                     } else {
                         filterskill("");
-                        skilldamagedclicked = false;
+                        skilldamageclicked = false;
                     }
                 }),
             );
@@ -343,6 +392,10 @@
                         </hr>
 
                         <!-- Filter Rank -->
+                        <label id="rankl" class="button">
+                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
+                        </label>
+
                         <label id="rankss" class="button">
                             <input type="image" src="assets/ui/rankss.png" class="filterimage" name="rankss">
                         </label>
@@ -355,9 +408,14 @@
                             <input type="image" src="assets/ui/ranka.png" class="filterimage" name="ranka">
                         </label>
 
-                        <label id="rankl" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
-                        </label>
+                        <hr>
+                        </hr>
+
+                        <div>
+                            <!-- Filter Region -->
+                            <button id="regionglobal" type="button" class="btn btn-primary btn-sm filterbutton">Global
+                                Gear</button>
+                        </div>
 
                         <hr>
                         </hr>
@@ -387,8 +445,9 @@
                                         <th>Max Stats</th>
                                         <th>Story Skill</th>
                                         <th>Colloseum Skill</th>
-                                        <th class="none" style="display:none;">Skill Category</th>
-                                        <th>Obtained from</th>
+                                        <th class="none" style="display:none;">Tags</th>
+                                        <th class="none" style="display:none;">Skill Tags</th>
+                                        <th class="none" style="display:none;">Release Tag</th>
                                     </tr>
                                 </thead>
                             </table>

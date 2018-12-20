@@ -86,7 +86,7 @@
             var regionglobalclicked = false;
             var jobclicked = false;
 
-            var skilldamagedclicked = false;
+            var skilldamageclicked = false;
 
             function filtertype(name) {
                 $('#weapons').DataTable().column(3).search(name).draw();
@@ -137,7 +137,7 @@
             }
 
             function filterregion(name) {
-                $('#weapons').DataTable().column(14).search(name).draw();
+                $('#weapons').DataTable().column(13).search(name).draw();
             }
 
             function activateregion(currentregion) {
@@ -149,7 +149,7 @@
             }
 
             function filterjob(name) {
-                $('#weapons').DataTable().column(15).search(name).draw();
+                $('#weapons').DataTable().column(14).search(name).draw();
             }
 
             function activatejob(currentjob) {
@@ -161,7 +161,7 @@
             }
 
             function filterskill(name) {
-                $('#weapons').DataTable().column(9).search(name).draw();
+                $('#weapons').DataTable().column(12).search(name).draw();
             }
 
             function activateskill(currentskill) {
@@ -185,14 +185,12 @@
                         }),
                         renderer: function (api, rowIdx, columns) {
                             var data = $.map(columns, function (col, i) {
-                                if (col.columnIndex > 9) {
-                                    return col.hidden ?
-                                        '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
-                                        '<td class="modaltitle">' + col.title + '</td> ' +
-                                        '<td class="modaldata">' + col.data + '</td>' +
-                                        '</tr>' :
-                                        '';
-                                }
+                                return col.hidden ?
+                                    '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                    '<td class="modaltitle">' + col.title + '</td> ' +
+                                    '<td class="modaldata">' + col.data + '</td>' +
+                                    '</tr>' :
+                                    '';
                             }).join('');
 
                             return data ?
@@ -233,7 +231,6 @@
                     },
                     { data: 5 },
                     { data: 6 },
-                    { data: 13 },
                     {
                         data: null,
                         render: function (data, type, row) {
@@ -252,9 +249,38 @@
                             return data[11] + ' - ' + data[12];
                         }
                     },
-                    { data: 14 },
-                    { data: 15 },
-                    { data: 16 }
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            var skilltag = "";
+                            var globaltag = "";
+                            var jobtag = "";
+
+                            skilltag = data[13];
+
+                            if (data[14] == "Global") {
+                                globaltag = "; " + data[14];
+                            }
+
+                            if (data[15] == "Job Weapon") {
+                                jobtag = "; " + data[15];
+                            }
+
+                            return skilltag + globaltag + jobtag;
+                        }
+                    },
+                    {
+                        data: 13,
+                        visible: false
+                    },
+                    {
+                        data: 14,
+                        visible: false
+                    },
+                    {
+                        data: 15,
+                        visible: false
+                    }
                 ]
             },
 
@@ -458,7 +484,7 @@
                 $('#job').on('click', function () {
                     deactivatejob();
                     if (!jobclicked) {
-                        filterjob("Yes");
+                        filterjob("Job Weapon");
                         activatejob("job");
                         jobclicked = true;
                     } else {
@@ -470,13 +496,13 @@
                 // Filter Skill
                 $('#skilldamage').on('click', function () {
                     deactivateskill();
-                    if (!skilldamagedclicked) {
+                    if (!skilldamageclicked) {
                         filterskill("damage");
                         activateskill("damage");
-                        skilldamagedclicked = true;
+                        skilldamageclicked = true;
                     } else {
                         filterskill("");
-                        skilldamagedclicked = false;
+                        skilldamageclicked = false;
                     }
                 }),
             );
@@ -676,7 +702,8 @@
 
                     <div>
                         <!-- Filter Skill -->
-                        <button id="skilldamage" type="button" class="btn btn-primary btn-sm filterbutton">Damage Skills</button>
+                        <button id="skilldamage" type="button" class="btn btn-primary btn-sm filterbutton">Damage
+                            Skills</button>
                     </div>
                 </div>
             </div>
@@ -697,13 +724,13 @@
                                         <th>Rank</th>
                                         <th>Cost</th>
                                         <th>Max Stats</th>
-                                        <th class="none" style="display:none;">Skill Category</th>
                                         <th class="none" style="display:none;">Story Skill</th>
                                         <th class="none" style="display:none;">Colloseum Skill</th>
                                         <th class="none" style="display:none;">Colloseum Aid Skill</th>
-                                        <th class="none" style="display:none;">Obtained from</th>
-                                        <th class="none" style="display:none;">Released</th>
-                                        <th class="none" style="display:none;">Job Weapon</th>
+                                        <th class="none" style="display:none;">Tags</th>
+                                        <th class="none" style="display:none;">Skill Tags</th>
+                                        <th class="none" style="display:none;">Release Tag</th>
+                                        <th class="none" style="display:none;">Job Weapon Tag</th>
                                     </tr>
                                 </thead>
                             </table>

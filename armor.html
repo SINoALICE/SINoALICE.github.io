@@ -75,6 +75,10 @@
             var ranksclicked = false;
             var rankssclicked = false;
 
+            var regionglobalclicked = false;
+
+            var skilldamageclicked = false;
+
             function filtertype(name) {
                 $('#armor').DataTable().column(3).search(name).draw();
             }
@@ -105,9 +109,34 @@
                 $("#rankss").css('background', '');
             }
 
+            function filterregion(name) {
+                $('#armor').DataTable().column(10).search(name).draw();
+            }
+
+            function activateregion(currentregion) {
+                $("#region" + currentregion).css('background', 'midnightblue');
+            }
+
+            function deactivateregion() {
+                $("#regionglobal").css('background', '');
+            }
+
+            function filterskill(name) {
+                $('#armor').DataTable().column(9).search(name).draw();
+            }
+
+            function activateskill(currentskill) {
+                $("#skill" + currentskill).css('background', 'midnightblue');
+            }
+
+            function deactivateskill() {
+                $("#skilldamage").css('background', '');
+            }
+
             $('#armor').DataTable({
                 ajax: "jsonfiles/armor.json",
                 pageLength: 25,
+                responsive: {},
                 columns: [
                     { data: 0 },
                     {
@@ -139,20 +168,42 @@
                         }
                     },
                     { data: 7 },
-                    { data: 8 }
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            var skilltag = "";
+                            var globaltag = "";
+
+                            skilltag = data[8];
+
+                            if (data[9] == "Global") {
+                                globaltag = "; " + data[9];
+                            }
+
+                            return skilltag + globaltag;
+                        }
+                    },
+                    {
+                        data: 8, 
+                        visible: false
+                    },
+                    {
+                        data: 9, 
+                        visible: false
+                    }
                 ]
             },
 
                 // Filter Type
                 $('#typehead').on('click', function () {
                     deactivatetype();
-                    if (!typecrystalclicked) {
+                    if (!typeheadclicked) {
                         filtertype("head");
                         activatetype("head");
-                        typecrystalclicked = true;
+                        typeheadclicked = true;
                     } else {
                         filtertype("");
-                        typecrystalclicked = false;
+                        typeheadclicked = false;
                     }
                 }),
 
@@ -238,6 +289,32 @@
                     } else {
                         filterrank("");
                         rankssclicked = false;
+                    }
+                }),
+
+                // Filter Region
+                $('#regionglobal').on('click', function () {
+                    deactivateregion();
+                    if (!regionglobalclicked) {
+                        filterregion("Global");
+                        activateregion("global");
+                        regionglobalclicked = true;
+                    } else {
+                        filterregion("");
+                        regionglobalclicked = false;
+                    }
+                }),
+
+                // Filter Skill
+                $('#skilldamage').on('click', function () {
+                    deactivateskill();
+                    if (!skilldamageclicked) {
+                        filterskill("damage");
+                        activateskill("damage");
+                        skilldamageclicked = true;
+                    } else {
+                        filterskill("");
+                        skilldamageclicked = false;
                     }
                 }),
             );
@@ -346,6 +423,23 @@
                             <input type="image" src="assets/ui/rankb.png" class="filterimage" name="rankb">
                         </label>
                     </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Region -->
+                        <button id="regionglobal" type="button" class="btn btn-primary btn-sm filterbutton">Global Gear</button>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Skill -->
+                        <button id="skilldamage" type="button" class="btn btn-primary btn-sm filterbutton">Damage
+                            Skills</button>
+                    </div>
                 </div>
             </div>
 
@@ -365,7 +459,9 @@
                                         <th>Max Stats</th>
                                         <th>Story Skill</th>
                                         <th>Set Bonus</th>
-                                        <th>Obtained from</th>
+                                        <th class="none" style="display:none;">Tags</th>
+                                        <th class="none" style="display:none;">Skill Tags</th>
+                                        <th class="none" style="display:none;">Release Tag</th>
                                     </tr>
                                 </thead>
                             </table>
