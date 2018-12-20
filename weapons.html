@@ -141,7 +141,7 @@
             }
 
             function activateregion(currentregion) {
-                $("#region" + currentregion).css('background', 'red');
+                $("#region" + currentregion).css('background', 'midnightblue');
             }
 
             function deactivateregion() {
@@ -153,7 +153,7 @@
             }
 
             function activatejob(currentjob) {
-                $("#" + currentjob).css('background', 'red');
+                $("#" + currentjob).css('background', 'midnightblue');
             }
 
             function deactivatejob() {
@@ -165,7 +165,7 @@
             }
 
             function activateskill(currentskill) {
-                $("#skill" + currentskill).css('background', 'red');
+                $("#skill" + currentskill).css('background', 'midnightblue');
             }
 
             function deactivateskill() {
@@ -665,7 +665,7 @@
 
                     <div>
                         <!-- Filter Region -->
-                        <input id="regionglobal" type="button" class="filterbutton" name="regionglobal" value="Global Gear">
+                        <button id="regionglobal" type="button" class="btn btn-primary filterbutton">Global Gear</button>
                     </div>
 
                     <hr>
@@ -673,7 +673,7 @@
 
                     <div>
                         <!-- Filter Job -->
-                        <input id="job" type="button" class="filterbutton" name="job" value="Job Weapons">
+                        <button id="job" type="button" class="btn btn-primary filterbutton">Job Weapons</button>
                     </div>
 
                     <hr>
@@ -681,7 +681,7 @@
 
                     <div>
                         <!-- Filter Skill -->
-                        <input id="skilldamage" type="button" class="filterbutton" name="skill" value="Damage Skills">
+                        <button id="skilldamage" type="button" class="btn btn-primary filterbutton">Damage Skills</button>
                     </div>
                 </div>
             </div>
