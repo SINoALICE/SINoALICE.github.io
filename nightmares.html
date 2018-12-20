@@ -75,7 +75,7 @@
             var rankssclicked = false;
 
             function filterelement(name) {
-                $('#weapons').DataTable().column(4).search(name).draw();
+                $('#nightmares').DataTable().column(3).search(name).draw();
             }
 
             function activateelement(currentelement) {
@@ -89,7 +89,7 @@
             }
 
             function filterrank(name) {
-                $('#armor').DataTable().column(4).search(name, true, false).draw();
+                $('#nightmares').DataTable().column(4).search(name, true, false).draw();
             }
 
             function activaterank(currentrank) {
@@ -103,22 +103,36 @@
                 $("#rankl").css('background', '');
             }
 
+            function filterskill(name) {
+                $('#nightmares').DataTable().column(9).search(name).draw();
+            }
+
+            function activateskill(currentskill) {
+                $("#skill" + currentskill).css('background', 'midnightblue');
+            }
+
+            function deactivateskill() {
+                $("#skilldamage").css('background', '');
+            }
+
             $('#nightmares').DataTable({
                 ajax: "jsonfiles/nightmares.json",
                 pageLength: 25,
+                responsive: {
+                },
                 columns: [
                     { data: 0 },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/armor/CardS' + data[0] + '.png" class="armorimage"/>';
+                            return '<img src="assets/nightmares/CardS' + data[0] + '.png" class="nightmareimage"/>';
                         }
                     },
                     { data: 1 },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/type' + data[2] + '.png" class="typeimage"/>' +
+                            return '<img src="assets/ui/element' + data[2] + '.png" class="elementimage"/>' +
                                 '<span style="display:none;">' + data[2] + '</span>';
                         }
                     },
@@ -142,9 +156,11 @@
                             return data[7] + ' - ' + data[8];
                         }
                     },
-                    { data: 9 }
+                    { data: 9 },
+                    { data: 10 }
                 ]
             },
+
                 // Filter Element
                 $('#elementfire').on('click', function () {
                     deactivateelement();
@@ -218,18 +234,43 @@
                         rankssclicked = false;
                     }
                 }),
+
+                $('#rankl').on('click', function () {
+                    deactivaterank();
+                    if (!rankaclicked) {
+                        filterrank("^l$");
+                        activaterank("l");
+                        rankaclicked = true;
+                    } else {
+                        filterrank("");
+                        rankaclicked = false;
+                    }
+                }),
+
+                // Filter Skill
+                $('#skilldamage').on('click', function () {
+                    deactivateskill();
+                    if (!skilldamagedclicked) {
+                        filterskill("damage");
+                        activateskill("damage");
+                        skilldamagedclicked = true;
+                    } else {
+                        filterskill("");
+                        skilldamagedclicked = false;
+                    }
+                }),
             );
         });
     </script>
 
     <style type="text/css">
-        .armorimage {
+        .nightmareimage {
             width: 60px;
             display: block;
             margin: auto;
         }
 
-        .typeimage {
+        .elementimage {
             width: 25px;
             display: block;
             margin: auto;
@@ -285,20 +326,18 @@
                 <h1 class="page-header">Filter</h1>
                 <div class="container" style="width: 100%;">
                     <div>
-                        <div>
-                            <!-- Filter Element -->
-                            <label id="elementfire" class="button">
-                                <input type="image" src="assets/ui/elementfire.png" class="filterimage" name="elementfire">
-                            </label>
+                        <!-- Filter Element -->
+                        <label id="elementfire" class="button">
+                            <input type="image" src="assets/ui/elementfire.png" class="filterimage" name="elementfire">
+                        </label>
 
-                            <label id="elementwind" class="button">
-                                <input type="image" src="assets/ui/elementwind.png" class="filterimage" name="elementwind">
-                            </label>
+                        <label id="elementwind" class="button">
+                            <input type="image" src="assets/ui/elementwind.png" class="filterimage" name="elementwind">
+                        </label>
 
-                            <label id="elementwater" class="button">
-                                <input type="image" src="assets/ui/elementwater.png" class="filterimage" name="elementwater">
-                            </label>
-                        </div>
+                        <label id="elementwater" class="button">
+                            <input type="image" src="assets/ui/elementwater.png" class="filterimage" name="elementwater">
+                        </label>
 
                         <hr>
                         </hr>
@@ -316,9 +355,18 @@
                             <input type="image" src="assets/ui/ranka.png" class="filterimage" name="ranka">
                         </label>
 
-                        <label id="rankb" class="button">
-                            <input type="image" src="assets/ui/rankb.png" class="filterimage" name="rankb">
+                        <label id="rankl" class="button">
+                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
                         </label>
+
+                        <hr>
+                        </hr>
+
+                        <div>
+                            <!-- Filter Skill -->
+                            <button id="skilldamage" type="button" class="btn btn-primary btn-sm filterbutton">Damage
+                                Skills</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -339,6 +387,7 @@
                                         <th>Max Stats</th>
                                         <th>Story Skill</th>
                                         <th>Colloseum Skill</th>
+                                        <th class="none" style="display:none;">Skill Category</th>
                                         <th>Obtained from</th>
                                     </tr>
                                 </thead>
