@@ -213,7 +213,7 @@
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/type' + data[2] + '.png" class="elementimage"/>' +
+                            return '<img src="assets/ui/type' + data[2] + '.png" class="typeimage"/>' +
                                 '<span style="display:none;">' + data[2] + '</span>';
                         }
                     },
@@ -487,10 +487,6 @@
                     }
                 }),
             );
-
-            if (window.location.href.indexOf('#myModal') != -1) {
-                $('#myModal').modal('show');
-            }
         });
     </script>
 
@@ -502,6 +498,12 @@
         }
 
         .elementimage {
+            width: 25px;
+            display: block;
+            margin: auto;
+        }
+
+        .typeimage {
             width: 25px;
             display: block;
             margin: auto;
@@ -707,7 +709,7 @@
                                         <th class="none" style="display:none;">Story Skill</th>
                                         <th class="none" style="display:none;">Colloseum Skill</th>
                                         <th class="none" style="display:none;">Colloseum Aid Skill</th>
-                                        <th class="none" style="display:none;">Optained from</th>
+                                        <th class="none" style="display:none;">Obtained from</th>
                                         <th class="none" style="display:none;">Released</th>
                                         <th class="none" style="display:none;">Job Weapon</th>
                                     </tr>
