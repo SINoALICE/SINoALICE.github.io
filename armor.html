@@ -174,10 +174,10 @@
                             var skilltag = "";
                             var globaltag = "";
 
-                            skilltag = data[8];
+                            skilltag = '<span class="label label-primary labeltag">' + data[8] + '</span>'
 
                             if (data[9] == "Global") {
-                                globaltag = "; " + data[9];
+                                globaltag = '<span class="label label-primary labeltag">' + data[9] + '</span>'
                             }
 
                             return skilltag + globaltag;
@@ -350,6 +350,10 @@
             width: 125px;
             display: block;
             margin: auto;
+        }
+
+        .labeltag {
+            margin: 5px;
         }
 
         .sidenav {

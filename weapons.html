@@ -256,14 +256,14 @@
                             var globaltag = "";
                             var jobtag = "";
 
-                            skilltag = data[13];
+                            skilltag = '<span class="label label-primary labeltag">' + data[13] + '</span>'
 
                             if (data[14] == "Global") {
-                                globaltag = "; " + data[14];
+                                globaltag = '<span class="label label-primary labeltag">' + data[14] + '</span>'
                             }
 
                             if (data[15] == "Job Weapon") {
-                                jobtag = "; " + data[15];
+                                jobtag = '<span class="label label-primary labeltag">' + data[15] + '</span>'
                             }
 
                             return skilltag + globaltag + jobtag;
@@ -544,6 +544,10 @@
             width: 125px;
             display: block;
             margin: auto;
+        }
+
+        .labeltag {
+            margin: 5px;
         }
 
         .modal-header {
