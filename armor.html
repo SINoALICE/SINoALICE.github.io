@@ -114,7 +114,7 @@
             }
 
             function activateregion(currentregion) {
-                $("#region" + currentregion).css('background', '#635f53');
+                $("#region" + currentregion).css('background', 'black');
             }
 
             function deactivateregion() {
@@ -126,7 +126,7 @@
             }
 
             function activateskill(currentskill) {
-                $("#skill" + currentskill).css('background', '#635f53');
+                $("#skill" + currentskill).css('background', 'black');
             }
 
             function deactivateskill() {
@@ -351,6 +351,10 @@
             display: block;
             margin: auto;
             background-color: #4b4642;
+        }
+        
+        .filterbutton:hover, .filterbutton:focus, .filterbutton:active:focus, .filterbutton:active:hover {
+            background-color: #635f53;
         }
 
         .labeltag {
