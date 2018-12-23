@@ -71,6 +71,7 @@
             $('#armor').DataTable({
                 ajax: "resources/data/armor.json",
                 pageLength: 25,
+                stateSave: true,
                 responsive: {},
                 columns: [
                     { data: 0 },
@@ -125,6 +126,13 @@
                     {
                         data: 9,
                         visible: false
+                    },
+                    {
+                        data: 0,
+                        targets: 0,
+                        checkboxes: {
+                            selectRow: false
+                        }
                     }
                 ]
             },
@@ -283,6 +291,7 @@
                                         <th class="none" style="display:none;">Tags</th>
                                         <th class="none" style="display:none;">Skill Tags</th>
                                         <th class="none" style="display:none;">Release Tag</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                             </table>

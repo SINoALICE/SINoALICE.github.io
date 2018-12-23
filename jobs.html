@@ -69,6 +69,7 @@
             $('#jobs').DataTable({
                 ajax: "resources/data/jobs.json",
                 pageLength: 25,
+                stateSave: true,
                 columns: [
                     {
                         data: 0,
@@ -115,7 +116,14 @@
                                 '<span style="display:none;">' + data[7] + '</span>';
                         }
                     },
-                    { data: 8 }
+                    { data: 8 },
+                    {
+                        data: 0,
+                        targets: 0,
+                        checkboxes: {
+                            selectRow: false
+                        }
+                    }
                 ]
             },
 
@@ -373,6 +381,7 @@
                                         <th>Gacha</th>
                                         <th>Type</th>
                                         <th>Region</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                             </table>
