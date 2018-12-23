@@ -47,6 +47,16 @@ var regionglobalclicked = false;
 var jobweaponclicked = false;
 
 
+// Reset Filter
+
+function resetfilter() {
+    $('#weapons').DataTable().columns().search("").draw();
+    $('#armor').DataTable().columns().search("").draw();
+    $('#jobs').DataTable().columns().search("").draw();
+    $('#nightmares').DataTable().columns().search("").draw();
+}
+
+
 // Filter Type
 
 function filtertype(name) {
