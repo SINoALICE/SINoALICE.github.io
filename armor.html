@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" type="img/ico" href="assets/ui/favicon.png">
+    <link rel="icon" type="img/ico" href="resources/images/ui/favicon.png">
 
     <title>Armor</title>
 
@@ -62,79 +62,14 @@
     </script>
 
     <!-- Data Display Script-->
+    <script type="text/javascript" src="resources/js/filterfunctions.js"></script>
+
     <script type="text/javascript" class="init">
         $(document).ready(function () {
 
-            var typeheadclicked = false;
-            var typebodyclicked = false;
-            var typefeetclicked = false;
-            var typehandsclicked = false;
-
-            var rankbclicked = false;
-            var rankaclicked = false;
-            var ranksclicked = false;
-            var rankssclicked = false;
-
-            var regionglobalclicked = false;
-
-            var skilldamageclicked = false;
-
-            function filtertype(name) {
-                $('#armor').DataTable().column(3).search(name).draw();
-            }
-
-            function activatetype(currenttype) {
-                $("#type" + currenttype).css('background', '#4b4642');
-            }
-
-            function deactivatetype() {
-                $("#typehead").css('background', '');
-                $("#typebody").css('background', '');
-                $("#typefeet").css('background', '');
-                $("#typehands").css('background', '');
-            }
-
-            function filterrank(name) {
-                $('#armor').DataTable().column(4).search(name, true, false).draw();
-            }
-
-            function activaterank(currentrank) {
-                $("#rank" + currentrank).css('background', '#4b4642');
-            }
-
-            function deactivaterank() {
-                $("#rankb").css('background', '');
-                $("#ranka").css('background', '');
-                $("#ranks").css('background', '');
-                $("#rankss").css('background', '');
-            }
-
-            function filterregion(name) {
-                $('#armor').DataTable().column(10).search(name).draw();
-            }
-
-            function activateregion(currentregion) {
-                $("#region" + currentregion).css('background', 'black');
-            }
-
-            function deactivateregion() {
-                $("#regionglobal").css('background', '');
-            }
-
-            function filterskill(name) {
-                $('#armor').DataTable().column(9).search(name).draw();
-            }
-
-            function activateskill(currentskill) {
-                $("#skill" + currentskill).css('background', 'black');
-            }
-
-            function deactivateskill() {
-                $("#skilldamage").css('background', '');
-            }
 
             $('#armor').DataTable({
-                ajax: "jsonfiles/armor.json",
+                ajax: "resources/data/armor.json",
                 pageLength: 25,
                 responsive: {},
                 columns: [
@@ -142,21 +77,21 @@
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/armor/CardS' + data[0] + '.png" class="armorimage"/>';
+                            return '<img src="resources/images/armor/CardS' + data[0] + '.png" class="armorimage"/>';
                         }
                     },
                     { data: 1 },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/type' + data[2] + '.png" class="typeimage"/>' +
+                            return '<img src="resources/images/ui/type' + data[2] + '.png" class="typeimage"/>' +
                                 '<span style="display:none;">' + data[2] + '</span>';
                         }
                     },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/rank' + data[3] + '.png" class="rankimage"/>' +
+                            return '<img src="resources/images/ui/rank' + data[3] + '.png" class="rankimage"/>' +
                                 '<span style="display:none;">' + data[3] + '</span>';
                         }
                     },
@@ -184,11 +119,11 @@
                         }
                     },
                     {
-                        data: 8, 
+                        data: 8,
                         visible: false
                     },
                     {
-                        data: 9, 
+                        data: 9,
                         visible: false
                     }
                 ]
@@ -196,100 +131,36 @@
 
                 // Filter Type
                 $('#typehead').on('click', function () {
-                    deactivatetype();
-                    if (!typeheadclicked) {
-                        filtertype("head");
-                        activatetype("head");
-                        typeheadclicked = true;
-                    } else {
-                        filtertype("");
-                        typeheadclicked = false;
-                    }
+                    dotypefilter(typeheadclicked, "head");
                 }),
 
                 $('#typebody').on('click', function () {
-                    deactivatetype();
-                    if (!typebodyclicked) {
-                        filtertype("body");
-                        activatetype("body");
-                        typebodyclicked = true;
-                    } else {
-                        filtertype("");
-                        typebodyclicked = false;
-                    }
+                    dotypefilter(typebodyclicked, "body");
                 }),
 
                 $('#typefeet').on('click', function () {
-                    deactivatetype();
-                    if (!typefeetclicked) {
-                        filtertype("feet");
-                        activatetype("feet");
-                        typefeetclicked = true;
-                    } else {
-                        filtertype("");
-                        typefeetclicked = false;
-                    }
+                    dotypefilter(typefeetclicked, "feet");
                 }),
 
                 $('#typehands').on('click', function () {
-                    deactivatetype();
-                    if (!typehandsclicked) {
-                        filtertype("hands");
-                        activatetype("hands");
-                        typehandsclicked = true;
-                    } else {
-                        filtertype("");
-                        typehandsclicked = false;
-                    }
+                    dotypefilter(typehandsclicked, "hands");
                 }),
 
                 // Filter Ranking
                 $('#rankb').on('click', function () {
-                    deactivaterank();
-                    if (!rankbclicked) {
-                        filterrank("^b$");
-                        activaterank("b");
-                        rankbclicked = true;
-                    } else {
-                        filterrank("");
-                        rankbclicked = false;
-                    }
+                    dorankfilter(rankbclicked, "b");
                 }),
 
                 $('#ranka').on('click', function () {
-                    deactivaterank();
-                    if (!rankaclicked) {
-                        filterrank("^a$");
-                        activaterank("a");
-                        rankaclicked = true;
-                    } else {
-                        filterrank("");
-                        rankaclicked = false;
-                    }
+                    dorankfilter(rankaclicked, "a");
                 }),
 
                 $('#ranks').on('click', function () {
-                    deactivaterank();
-                    if (!ranksclicked) {
-                        filterrank("^s$");
-                        activaterank("s");
-                        ranksclicked = true;
-                    } else {
-                        filterrank("");
-                        ranksclicked = false;
-                    }
+                    dorankfilter(ranksclicked, "s");
                 }),
 
                 $('#rankss').on('click', function () {
-                    deactivaterank();
-                    if (!rankssclicked) {
-                        filterrank("^ss$");
-                        activaterank("ss");
-                        rankssclicked = true;
-                    } else {
-                        filterrank("");
-                        rankssclicked = false;
-                    }
+                    dorankfilter(rankssclicked, "ss");
                 }),
 
                 // Filter Region
@@ -321,94 +192,34 @@
         });
     </script>
 
-    <style type="text/css">
-        .armorimage {
-            width: 60px;
-            display: block;
-            margin: auto;
-        }
-
-        .typeimage {
-            width: 25px;
-            display: block;
-            margin: auto;
-        }
-
-        .rankimage {
-            width: 30px;
-            display: block;
-            margin: auto;
-        }
-
-        .filterimage {
-            width: 30px;
-            display: block;
-            margin: auto;
-        }
-
-        .filterbutton {
-            width: 125px;
-            display: block;
-            margin: auto;
-            background-color: #4b4642;
-        }
-        
-        .filterbutton:hover, .filterbutton:focus, .filterbutton:active:focus, .filterbutton:active:hover {
-            background-color: #635f53;
-        }
-
-        .labeltag {
-            margin: 5px;
-            background-color: #4b4642;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 165px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            padding-top: 50px;
-        }
-
-        .main {
-            margin-left: 150px;
-            padding: 50px;
-        }
-
-        hr {
-            border-top: 1px solid #ababab;
-        }
-    </style>
+    <link href="resources/css/datadisplay.css" rel="stylesheet">
 </head>
 
-<body style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+<body style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
     <div id="wrapper">
 
         <div id="navigationbar"></div>
 
         <div id="page-wrapper">
-            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(assets/ui/background.png); background-color: goldenrod">
+            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                 <h1 class="page-header">Filter</h1>
                 <div class="container" style="width: 100%;">
                     <div>
                         <!-- Filter Type -->
                         <label id="typehead" class="button">
-                            <input type="image" src="assets/ui/typehead.png" class="filterimage" name="typehead">
+                            <input type="image" src="resources/images/ui/typehead.png" class="filterimage" name="typehead">
                         </label>
 
                         <label id="typebody" class="button">
-                            <input type="image" src="assets/ui/typebody.png" class="filterimage" name="typebody">
+                            <input type="image" src="resources/images/ui/typebody.png" class="filterimage" name="typebody">
                         </label>
 
                         <label id="typefeet" class="button">
-                            <input type="image" src="assets/ui/typefeet.png" class="filterimage" name="typefeet">
+                            <input type="image" src="resources/images/ui/typefeet.png" class="filterimage" name="typefeet">
                         </label>
 
                         <label id="typehands" class="button">
-                            <input type="image" src="assets/ui/typehands.png" class="filterimage" name="typehands">
+                            <input type="image" src="resources/images/ui/typehands.png" class="filterimage" name="typehands">
                         </label>
                     </div>
 
@@ -418,19 +229,19 @@
                     <div>
                         <!-- Filter Rank -->
                         <label id="rankss" class="button">
-                            <input type="image" src="assets/ui/rankss.png" class="filterimage" name="rankss">
+                            <input type="image" src="resources/images/ui/rankss.png" class="filterimage" name="rankss">
                         </label>
 
                         <label id="ranks" class="button">
-                            <input type="image" src="assets/ui/ranks.png" class="filterimage" name="ranks">
+                            <input type="image" src="resources/images/ui/ranks.png" class="filterimage" name="ranks">
                         </label>
 
                         <label id="ranka" class="button">
-                            <input type="image" src="assets/ui/ranka.png" class="filterimage" name="ranka">
+                            <input type="image" src="resources/images/ui/ranka.png" class="filterimage" name="ranka">
                         </label>
 
                         <label id="rankb" class="button">
-                            <input type="image" src="assets/ui/rankb.png" class="filterimage" name="rankb">
+                            <input type="image" src="resources/images/ui/rankb.png" class="filterimage" name="rankb">
                         </label>
                     </div>
 
@@ -457,7 +268,7 @@
                 <h1 class="page-header">Armor</h1>
                 <div class="row">
                     <div class="panel panel-default">
-                        <div class="panel-body" style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+                        <div class="panel-body" style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                             <table id="armor" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <thead>
                                     <tr>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" type="img/ico" href="assets/ui/favicon.png">
+    <link rel="icon" type="img/ico" href="resources/images/ui/favicon.png">
 
     <title>Weapons</title>
 
@@ -62,125 +62,19 @@
     </script>
 
     <!-- Data Display Script-->
+    <script type="text/javascript" src="resources/js/filterfunctions.js"></script>
+
     <script type="text/javascript" class="init">
         $(document).ready(function () {
-
-            var typecrystalclicked = false;
-            var typehammerclicked = false;
-            var typeinstrumentclicked = false;
-            var typerangedclicked = false;
-            var typespearclicked = false;
-            var typestaffclicked = false;
-            var typeswordclicked = false;
-            var typetomeclicked = false;
-
-            var elementfireclicked = false;
-            var elementwindclicked = false;
-            var elementwaterclicked = false;
-
-            var rankaclicked = false;
-            var ranksclicked = false;
-            var rankssclicked = false;
-            var ranklclicked = false;
-
-            var regionglobalclicked = false;
-            var jobclicked = false;
-
-            var skilldamageclicked = false;
-
-            function filtertype(name) {
-                $('#weapons').DataTable().column(3).search(name).draw();
-            }
-
-            function activatetype(currenttype) {
-                $("#type" + currenttype).css('background', '#4b4642');
-            }
-
-            function deactivatetype() {
-                $("#typecrystal").css('background', '');
-                $("#typehammer").css('background', '');
-                $("#typeinstrument").css('background', '');
-                $("#typeranged").css('background', '');
-                $("#typespear").css('background', '');
-                $("#typestaff").css('background', '');
-                $("#typesword").css('background', '');
-                $("#typetome").css('background', '');
-            }
-
-            function filterelement(name) {
-                $('#weapons').DataTable().column(4).search(name).draw();
-            }
-
-            function activateelement(currentelement) {
-                $("#element" + currentelement).css('background', '#4b4642');
-            }
-
-            function deactivateelement() {
-                $("#elementfire").css('background', '');
-                $("#elementwind").css('background', '');
-                $("#elementwater").css('background', '');
-            }
-
-            function filterrank(name) {
-                $('#weapons').DataTable().column(5).search(name, true, false).draw();
-            }
-
-            function activaterank(currentrank) {
-                $("#rank" + currentrank).css('background', '#4b4642');
-            }
-
-            function deactivaterank() {
-                $("#ranka").css('background', '');
-                $("#ranks").css('background', '');
-                $("#rankss").css('background', '');
-                $("#rankl").css('background', '');
-            }
-
-            function filterregion(name) {
-                $('#weapons').DataTable().column(13).search(name).draw();
-            }
-
-            function activateregion(currentregion) {
-                $("#region" + currentregion).css('background', 'black');
-            }
-
-            function deactivateregion() {
-                $("#regionglobal").css('background', '');
-            }
-
-            function filterjob(name) {
-                $('#weapons').DataTable().column(14).search(name).draw();
-            }
-
-            function activatejob(currentjob) {
-                $("#" + currentjob).css('background', 'black');
-            }
-
-            function deactivatejob() {
-                $("#job").css('background', '');
-            }
-
-            function filterskill(name) {
-                $('#weapons').DataTable().column(12).search(name).draw();
-            }
-
-            function activateskill(currentskill) {
-                $("#skill" + currentskill).css('background', 'black');
-            }
-
-            function deactivateskill() {
-                $("#skilldamage").css('background', '');
-            }
-
             $('#weapons').DataTable({
-                ajax: "jsonfiles/weapons.json",
+                ajax: "resources/data/weapons.json",
                 pageLength: 25,
                 responsive: {
                     details: {
                         display: $.fn.dataTable.Responsive.display.modal({
                             header: function (row) {
                                 var data = row.data();
-                                return '<img src="assets/weapons/CardS' + data[0] + '.png" class="modalimage"/> ' + 'Details for ' + data[1];
+                                return '<img src="resources/images/weapons/CardS' + data[0] + '.png" class="modalimage"/> ' + 'Details for ' + data[1];
                             }
                         }),
                         renderer: function (api, rowIdx, columns) {
@@ -204,28 +98,28 @@
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/weapons/CardS' + data[0] + '.png" class="weaponimage"/>';
+                            return '<img src="resources/images/weapons/CardS' + data[0] + '.png" class="weaponimage"/>';
                         }
                     },
                     { data: 1 },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/type' + data[2] + '.png" class="typeimage"/>' +
+                            return '<img src="resources/images/ui/type' + data[2] + '.png" class="typeimage"/>' +
                                 '<span style="display:none;">' + data[2] + '</span>';
                         }
                     },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/element' + data[3] + '.png" class="elementimage"/>' +
+                            return '<img src="resources/images/ui/element' + data[3] + '.png" class="elementimage"/>' +
                                 '<span style="display:none;">' + data[3] + '</span>';
                         }
                     },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/rank' + data[4] + '.png" class="rankimage"/>' +
+                            return '<img src="resources/images/ui/rank' + data[4] + '.png" class="rankimage"/>' +
                                 '<span style="display:none;">' + data[4] + '</span>';
                         }
                     },
@@ -286,187 +180,66 @@
 
                 // Filter Type
                 $('#typecrystal').on('click', function () {
-                    deactivatetype();
-                    if (!typecrystalclicked) {
-                        filtertype("crystal");
-                        activatetype("crystal");
-                        typecrystalclicked = true;
-                    } else {
-                        filtertype("");
-                        typecrystalclicked = false;
-                    }
+                    dotypefilter(typecrystalclicked, "crystal");
                 }),
 
                 $('#typehammer').on('click', function () {
-                    deactivatetype();
-                    if (!typehammerclicked) {
-                        filtertype("hammer");
-                        activatetype("hammer");
-                        typehammerclicked = true;
-                    } else {
-                        filtertype("");
-                        typehammerclicked = false;
-                    }
+                    dotypefilter(typehammerclicked, "hammer");
                 }),
 
                 $('#typeinstrument').on('click', function () {
-                    deactivatetype();
-                    if (!typeinstrumentclicked) {
-                        filtertype("instrument");
-                        activatetype("instrument");
-                        typeinstrumentclicked = true;
-                    } else {
-                        filtertype("");
-                        typeinstrumentclicked = false;
-                    }
+                    dotypefilter(typeinstrumentclicked, "instrument");
                 }),
 
                 $('#typeranged').on('click', function () {
-                    deactivatetype();
-                    if (!typerangedclicked) {
-                        filtertype("ranged");
-                        activatetype("ranged");
-                        typerangedclicked = true;
-                    } else {
-                        filtertype("");
-                        typerangedclicked = false;
-                    }
+                    dotypefilter(typerangedclicked, "ranged");
                 }),
 
                 $('#typespear').on('click', function () {
-                    deactivatetype();
-                    if (!typespearclicked) {
-                        filtertype("spear");
-                        activatetype("spear");
-                        typespearclicked = true;
-                    } else {
-                        filtertype("");
-                        typespearclicked = false;
-                    }
+                    dotypefilter(typespearclicked, "spear");
                 }),
 
                 $('#typestaff').on('click', function () {
-                    deactivatetype();
-                    if (!typestaffclicked) {
-                        filtertype("staff");
-                        activatetype("staff");
-                        typestaffclicked = true;
-                    } else {
-                        filtertype("");
-                        typestaffclicked = false;
-                    }
+                    dotypefilter(typestaffclicked, "staff");
                 }),
 
                 $('#typesword').on('click', function () {
-                    deactivatetype();
-                    if (!typeswordclicked) {
-                        filtertype("sword");
-                        activatetype("sword");
-                        typeswordclicked = true;
-                    } else {
-                        filtertype("");
-                        typeswordclicked = false;
-                    }
+                    dotypefilter(typeswordclicked, "sword");
                 }),
 
                 $('#typetome').on('click', function () {
-                    deactivatetype();
-                    if (!typetomeclicked) {
-                        filtertype("tome");
-                        activatetype("tome");
-                        typetomeclicked = true;
-                    } else {
-                        filtertype("");
-                        typetomeclicked = false;
-                    }
+                    dotypefilter(typetomeclicked, "tome");
                 }),
 
                 // Filter Element
                 $('#elementfire').on('click', function () {
-                    deactivateelement();
-                    if (!elementfireclicked) {
-                        filterelement("fire");
-                        activateelement("fire");
-                        elementfireclicked = true;
-                    } else {
-                        filterelement("");
-                        elementfireclicked = false;
-                    }
+                    doelementfilter(elementfireclicked, "fire");
                 }),
 
                 $('#elementwind').on('click', function () {
-                    deactivateelement();
-                    if (!elementwindclicked) {
-                        filterelement("wind");
-                        activateelement("wind");
-                        elementwindclicked = true;
-                    } else {
-                        filterelement("");
-                        elementwindclicked = false;
-                    }
+                    doelementfilter(elementwindclicked, "wind");
                 }),
 
                 $('#elementwater').on('click', function () {
-                    deactivateelement();
-                    if (!elementwaterclicked) {
-                        filterelement("water");
-                        activateelement("water");
-                        elementwaterclicked = true;
-                    } else {
-                        filterelement("");
-                        elementwaterclicked = false;
-                    }
+                    doelementfilter(elementwaterclicked, "water");
                 }),
 
                 // Filter Ranking
                 $('#ranka').on('click', function () {
-                    deactivaterank();
-                    if (!rankaclicked) {
-                        filterrank("^a$");
-                        activaterank("a");
-                        rankaclicked = true;
-                    } else {
-                        filterrank("");
-                        rankaclicked = false;
-                    }
+                    dorankfilter(rankaclicked, "a");
                 }),
 
                 $('#ranks').on('click', function () {
-                    deactivaterank();
-                    if (!ranksclicked) {
-                        filterrank("^s$");
-                        activaterank("s");
-                        ranksclicked = true;
-                    } else {
-                        filterrank("");
-                        ranksclicked = false;
-                    }
+                    dorankfilter(ranksclicked, "s");
                 }),
 
                 $('#rankss').on('click', function () {
-                    deactivaterank();
-                    if (!rankssclicked) {
-                        filterrank("^ss$");
-                        activaterank("ss");
-                        rankssclicked = true;
-                    } else {
-                        filterrank("");
-                        rankssclicked = false;
-                    }
+                    dorankfilter(rankssclicked, "ss");
                 }),
 
                 $('#rankl').on('click', function () {
-                    deactivaterank();
-                    if (!ranklclicked) {
-                        filterrank("^l$");
-                        activaterank("l");
-                        ranklclicked = true;
-                    } else {
-                        filterrank("");
-                        ranklclicked = false;
-                    }
+                    dorankfilter(ranklclicked, "l");
                 }),
-
                 // Filter Region
                 $('#regionglobal').on('click', function () {
                     deactivateregion();
@@ -481,173 +254,72 @@
                 }),
 
                 // Filter Job
-                $('#job').on('click', function () {
-                    deactivatejob();
-                    if (!jobclicked) {
-                        filterjob("Job Weapon");
-                        activatejob("job");
-                        jobclicked = true;
+                $('#jobweapon').on('click', function () {
+                    deactivatejobweapon();
+                    if (!jobweaponclicked) {
+                        filterjobweapon("Job Weapon");
+                        activatejobweapon("jobweapon");
+                        jobweaponclicked = true;
                     } else {
-                        filterjob("");
-                        jobclicked = false;
+                        filterjobweapon("");
+                        jobweaponclicked = false;
                     }
                 }),
 
                 // Filter Skill
                 $('#skilldamage').on('click', function () {
-                    deactivateskill();
-                    if (!skilldamageclicked) {
-                        filterskill("damage");
-                        activateskill("damage");
-                        skilldamageclicked = true;
-                    } else {
-                        filterskill("");
-                        skilldamageclicked = false;
-                    }
+                    doskillfilter(skilldamageclicked, "damage");
                 }),
             );
         });
     </script>
 
-    <style type="text/css">
-        .weaponimage {
-            width: 60px;
-            display: block;
-            margin: auto;
-        }
-
-        .elementimage {
-            width: 25px;
-            display: block;
-            margin: auto;
-        }
-
-        .typeimage {
-            width: 25px;
-            display: block;
-            margin: auto;
-        }
-
-        .rankimage {
-            width: 30px;
-            display: block;
-            margin: auto;
-        }
-
-        .filterimage {
-            width: 30px;
-            display: block;
-            margin: auto;
-        }
-
-        .filterbutton {
-            width: 125px;
-            display: block;
-            margin: auto;
-            background-color: #4b4642;
-        }
-
-        .filterbutton:hover, .filterbutton:focus, .filterbutton:active:focus, .filterbutton:active:hover {
-            background-color: #635f53;
-        }
-        
-        .labeltag {
-            margin: 5px;
-            background-color: #4b4642;
-        }
-
-        .modal-header {
-            border-bottom: 1px solid black;
-        }
-
-        .modaltitle {
-            font-size: 14px;
-            padding-bottom: 5px;
-            font-weight: bold;
-            width: 30%;
-        }
-
-        .modaldata {
-            font-size: 14px;
-            padding-bottom: 5px;
-            width: 70%;
-        }
-
-        .modalimage {
-            width: 50px;
-            margin: auto;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 165px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            padding-top: 50px;
-        }
-
-        .main {
-            margin-left: 150px;
-            padding: 50px;
-        }
-
-        .modal-content {
-            background-color: goldenrod;
-            background-image: url("assets/ui/background.png");
-        }
-
-        hr {
-            border-top: 1px solid #ababab;
-        }
-    </style>
+    <link href="resources/css/datadisplay.css" rel="stylesheet">
 </head>
 
-<body style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+<body style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
     <div id="wrapper">
 
         <div id="navigationbar"></div>
 
         <div id="page-wrapper">
-            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(assets/ui/background.png); background-color: goldenrod">
+            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                 <h1 class="page-header">Filter</h1>
                 <div class="container" style="width: 100%;">
                     <div>
                         <!-- Filter Type -->
                         <label id="typecrystal" class="button">
-                            <input type="image" src="assets/ui/typecrystal.png" class="filterimage" name="typecrystal">
+                            <input type="image" src="resources/images/ui/typecrystal.png" class="filterimage" name="typecrystal">
                         </label>
 
                         <label id="typehammer" class="button">
-                            <input type="image" src="assets/ui/typehammer.png" class="filterimage" name="typehammer">
+                            <input type="image" src="resources/images/ui/typehammer.png" class="filterimage" name="typehammer">
                         </label>
 
                         <label id="typeinstrument" class="button">
-                            <input type="image" src="assets/ui/typeinstrument.png" class="filterimage" name="typeinstrument">
+                            <input type="image" src="resources/images/ui/typeinstrument.png" class="filterimage" name="typeinstrument">
                         </label>
 
                         <label id="typeranged" class="button">
-                            <input type="image" src="assets/ui/typeranged.png" class="filterimage" name="typeranged">
+                            <input type="image" src="resources/images/ui/typeranged.png" class="filterimage" name="typeranged">
                         </label>
 
                         </br>
 
                         <label id="typespear" class="button">
-                            <input type="image" src="assets/ui/typespear.png" class="filterimage" name="typespear">
+                            <input type="image" src="resources/images/ui/typespear.png" class="filterimage" name="typespear">
                         </label>
 
                         <label id="typestaff" class="button">
-                            <input type="image" src="assets/ui/typestaff.png" class="filterimage" name="typestaff">
+                            <input type="image" src="resources/images/ui/typestaff.png" class="filterimage" name="typestaff">
                         </label>
 
                         <label id="typesword" class="button">
-                            <input type="image" src="assets/ui/typesword.png" class="filterimage" name="typesword">
+                            <input type="image" src="resources/images/ui/typesword.png" class="filterimage" name="typesword">
                         </label>
 
                         <label id="typetome" class="button">
-                            <input type="image" src="assets/ui/typetome.png" class="filterimage" name="typetome">
+                            <input type="image" src="resources/images/ui/typetome.png" class="filterimage" name="typetome">
                         </label>
                     </div>
 
@@ -657,15 +329,15 @@
                     <div>
                         <!-- Filter Element -->
                         <label id="elementfire" class="button">
-                            <input type="image" src="assets/ui/elementfire.png" class="filterimage" name="elementfire">
+                            <input type="image" src="resources/images/ui/elementfire.png" class="filterimage" name="elementfire">
                         </label>
 
                         <label id="elementwind" class="button">
-                            <input type="image" src="assets/ui/elementwind.png" class="filterimage" name="elementwind">
+                            <input type="image" src="resources/images/ui/elementwind.png" class="filterimage" name="elementwind">
                         </label>
 
                         <label id="elementwater" class="button">
-                            <input type="image" src="assets/ui/elementwater.png" class="filterimage" name="elementwater">
+                            <input type="image" src="resources/images/ui/elementwater.png" class="filterimage" name="elementwater">
                         </label>
                     </div>
 
@@ -675,19 +347,19 @@
                     <div>
                         <!-- Filter Rank -->
                         <label id="rankl" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
+                            <input type="image" src="resources/images/ui/rankl.png" class="filterimage" name="rankl">
                         </label>
 
                         <label id="rankss" class="button">
-                            <input type="image" src="assets/ui/rankss.png" class="filterimage" name="rankss">
+                            <input type="image" src="resources/images/ui/rankss.png" class="filterimage" name="rankss">
                         </label>
 
                         <label id="ranks" class="button">
-                            <input type="image" src="assets/ui/ranks.png" class="filterimage" name="ranks">
+                            <input type="image" src="resources/images/ui/ranks.png" class="filterimage" name="ranks">
                         </label>
 
                         <label id="ranka" class="button">
-                            <input type="image" src="assets/ui/ranka.png" class="filterimage" name="ranka">
+                            <input type="image" src="resources/images/ui/ranka.png" class="filterimage" name="ranka">
                         </label>
                     </div>
 
@@ -703,8 +375,8 @@
                     </hr>
 
                     <div>
-                        <!-- Filter Job -->
-                        <button id="job" type="button" class="btn btn-primary btn-sm filterbutton">Job Weapons</button>
+                        <!-- Filter Job Weapons -->
+                        <button id="jobweapon" type="button" class="btn btn-primary btn-sm filterbutton">Job Weapons</button>
                     </div>
 
                     <hr>
@@ -712,7 +384,7 @@
 
                     <div>
                         <!-- Filter Skill -->
-                        <button id="skilldamage" type="button" class="btn btn-primary btn-sm filterbutton">Damage
+                        <button id="skilldamage" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Damage
                             Skills</button>
                     </div>
                 </div>
@@ -722,7 +394,7 @@
                 <h1 class="page-header">Weapons</h1>
                 <div class="row">
                     <div class="panel panel-default">
-                        <div class="panel-body" style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+                        <div class="panel-body" style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                             <table id="weapons" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <thead>
                                     <tr>

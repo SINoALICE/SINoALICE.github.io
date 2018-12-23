@@ -1,0 +1,97 @@
+.weaponimage, .armorimage, .nightmareimage, .cardimage {
+    width: 60px;
+    display: block;
+    margin: auto;
+}
+
+.typeimage, .elementimage {
+    width: 25px;
+    display: block;
+    margin: auto;
+}
+
+.rankimage {
+    width: 30px;
+    display: block;
+    margin: auto;
+}
+
+
+
+.filterimage {
+    width: 30px;
+    display: block;
+    margin: auto;
+}
+
+.filterbutton {
+    width: 125px;
+    display: block;
+    margin: auto;
+    background-color: #4b4642;
+}
+
+.filterbutton:hover, .filterbutton:focus, .filterbutton:active:focus, .filterbutton:active:hover {
+    background-color: #635f53;
+}
+
+.filterbuttongroup {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+.modal-header {
+    border-bottom: 1px solid black;
+}
+
+.modaltitle {
+    font-size: 14px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    width: 30%;
+}
+
+.modaldata {
+    font-size: 14px;
+    padding-bottom: 5px;
+    width: 70%;
+}
+
+.modalimage {
+    width: 50px;
+    margin: auto;
+}
+
+.modal-content {
+    background-color: goldenrod;
+    background-image: url("resources/images/ui/background.png");
+}
+
+
+
+.labeltag {
+    margin: 5px;
+    background-color: #4b4642;
+}
+
+.sidenav {
+    height: 100%;
+    width: 180px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 50px;
+}
+
+.main {
+    margin-left: 180px;
+    padding: 50px;
+}
+
+hr {
+    border-top: 1px solid #ababab;
+}

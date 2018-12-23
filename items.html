@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" type="img/ico" href="assets/ui/favicon.png">
+    <link rel="icon" type="img/ico" href="resources/images/ui/favicon.png">
 
     <title>Items</title>
 
@@ -65,7 +65,7 @@
     <script type="text/javascript" class="init">
         $(document).ready(function () {
             $('#itemsbooster').DataTable({
-                ajax: "jsonfiles/itemsbooster.json",
+                ajax: "resources/data/itemsbooster.json",
                 ordering: false,
                 bFilter: false,
                 lengthChange: false,
@@ -75,7 +75,7 @@
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/items/CardS' + data[0] + '.png" class="itemimage"/>';
+                            return '<img src="resources/images/items/CardS' + data[0] + '.png" class="itemimage"/>';
                         }
                     },
                     { data: 1 },
@@ -84,7 +84,7 @@
             });
 
             $('#itemsgeneral').DataTable({
-                ajax: "jsonfiles/itemsgeneral.json",
+                ajax: "resources/data/itemsgeneral.json",
                 ordering: false,
                 bFilter: false,
                 lengthChange: false,
@@ -94,7 +94,7 @@
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/items/Item' + data[0] + '.png" class="itemimage"/>';
+                            return '<img src="resources/images/items/Item' + data[0] + '.png" class="itemimage"/>';
                         }
                     },
                     { data: 1 },
@@ -121,7 +121,7 @@
     </style>
 </head>
 
-<body style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+<body style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
     <div id="wrapper">
 
         <div id="navigationbar"></div>
@@ -131,7 +131,7 @@
                 <h1 class="page-header">Booster Items</h1>
                 <div class="row">
                     <div class="panel panel-default">
-                        <div class="panel-body" style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+                        <div class="panel-body" style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                             <table id="itemsbooster" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <thead>
                                     <tr>
@@ -149,7 +149,7 @@
                 <h1 class="page-header">General Items</h1>
                 <div class="row">
                     <div class="panel panel-default">
-                        <div class="panel-body" style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+                        <div class="panel-body" style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                             <table id="itemsgeneral" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <thead>
                                     <tr>

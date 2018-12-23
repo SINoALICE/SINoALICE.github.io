@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" type="img/ico" href="assets/ui/favicon.png">
+    <link rel="icon" type="img/ico" href="resources/images/ui/favicon.png">
 
     <title>Nightmares</title>
 
@@ -62,77 +62,12 @@
     </script>
 
     <!-- Data Display Script-->
+    <script type="text/javascript" src="resources/js/filterfunctions.js"></script>
+
     <script type="text/javascript" class="init">
         $(document).ready(function () {
-
-            var elementfireclicked = false;
-            var elementwindclicked = false;
-            var elementwaterclicked = false;
-
-            var rankaclicked = false;
-            var ranksclicked = false;
-            var rankssclicked = false;
-            var ranklclicked = false;
-
-            var regionglobalclicked = false;
-
-            var skilldamageclicked = false;
-
-            function filterelement(name) {
-                $('#nightmares').DataTable().column(3).search(name).draw();
-            }
-
-            function activateelement(currentelement) {
-                $("#element" + currentelement).css('background', '#4b4642');
-            }
-
-            function deactivateelement() {
-                $("#elementfire").css('background', '');
-                $("#elementwind").css('background', '');
-                $("#elementwater").css('background', '');
-            }
-
-            function filterrank(name) {
-                $('#nightmares').DataTable().column(4).search(name, true, false).draw();
-            }
-
-            function activaterank(currentrank) {
-                $("#rank" + currentrank).css('background', '#4b4642');
-            }
-
-            function deactivaterank() {
-                $("#ranka").css('background', '');
-                $("#ranks").css('background', '');
-                $("#rankss").css('background', '');
-                $("#rankl").css('background', '');
-            }
-
-            function filterregion(name) {
-                $('#nightmares').DataTable().column(10).search(name).draw();
-            }
-
-            function activateregion(currentregion) {
-                $("#region" + currentregion).css('background', 'black');
-            }
-
-            function deactivateregion() {
-                $("#regionglobal").css('background', '');
-            }
-
-            function filterskill(name) {
-                $('#nightmares').DataTable().column(9).search(name).draw();
-            }
-
-            function activateskill(currentskill) {
-                $("#skill" + currentskill).css('background', 'black');
-            }
-
-            function deactivateskill() {
-                $("#skilldamage").css('background', '');
-            }
-
             $('#nightmares').DataTable({
-                ajax: "jsonfiles/nightmares.json",
+                ajax: "resources/data/nightmares.json",
                 pageLength: 25,
                 responsive: {},
                 columns: [
@@ -140,21 +75,21 @@
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/nightmares/CardS' + data[0] + '.png" class="nightmareimage"/>';
+                            return '<img src="resources/images/nightmares/CardS' + data[0] + '.png" class="nightmareimage"/>';
                         }
                     },
                     { data: 1 },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/element' + data[2] + '.png" class="elementimage"/>' +
+                            return '<img src="resources/images/ui/element' + data[2] + '.png" class="elementimage"/>' +
                                 '<span style="display:none;">' + data[2] + '</span>';
                         }
                     },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/rank' + data[3] + '.png" class="rankimage"/>' +
+                            return '<img src="resources/images/ui/rank' + data[3] + '.png" class="rankimage"/>' +
                                 '<span style="display:none;">' + data[3] + '</span>';
                         }
                     },
@@ -187,11 +122,11 @@
                         }
                     },
                     {
-                        data: 9, 
+                        data: 9,
                         visible: false
                     },
                     {
-                        data: 10, 
+                        data: 10,
                         visible: false
                     }
                 ]
@@ -199,88 +134,32 @@
 
                 // Filter Element
                 $('#elementfire').on('click', function () {
-                    deactivateelement();
-                    if (!elementfireclicked) {
-                        filterelement("fire");
-                        activateelement("fire");
-                        elementfireclicked = true;
-                    } else {
-                        filterelement("");
-                        elementfireclicked = false;
-                    }
+                    doelementfilter(elementfireclicked, "fire");
                 }),
 
                 $('#elementwind').on('click', function () {
-                    deactivateelement();
-                    if (!elementwindclicked) {
-                        filterelement("wind");
-                        activateelement("wind");
-                        elementwindclicked = true;
-                    } else {
-                        filterelement("");
-                        elementwindclicked = false;
-                    }
+                    doelementfilter(elementwindclicked, "wind");
                 }),
 
                 $('#elementwater').on('click', function () {
-                    deactivateelement();
-                    if (!elementwaterclicked) {
-                        filterelement("water");
-                        activateelement("water");
-                        elementwaterclicked = true;
-                    } else {
-                        filterelement("");
-                        elementwaterclicked = false;
-                    }
+                    doelementfilter(elementwaterclicked, "water");
                 }),
 
                 // Filter Ranking
                 $('#ranka').on('click', function () {
-                    deactivaterank();
-                    if (!rankaclicked) {
-                        filterrank("^a$");
-                        activaterank("a");
-                        rankaclicked = true;
-                    } else {
-                        filterrank("");
-                        rankaclicked = false;
-                    }
+                    dorankfilter(rankaclicked, "a");
                 }),
 
                 $('#ranks').on('click', function () {
-                    deactivaterank();
-                    if (!ranksclicked) {
-                        filterrank("^s$");
-                        activaterank("s");
-                        ranksclicked = true;
-                    } else {
-                        filterrank("");
-                        ranksclicked = false;
-                    }
+                    dorankfilter(ranksclicked, "s");
                 }),
 
                 $('#rankss').on('click', function () {
-                    deactivaterank();
-                    if (!rankssclicked) {
-                        filterrank("^ss$");
-                        activaterank("ss");
-                        rankssclicked = true;
-                    } else {
-                        filterrank("");
-                        rankssclicked = false;
-                    }
+                    dorankfilter(rankssclicked, "ss");
                 }),
 
                 $('#rankl').on('click', function () {
-                    deactivaterank();
-                    if (!rankaclicked) {
-                        filterrank("^l$");
-                        activaterank("l");
-                        rankaclicked = true;
-                    } else {
-                        filterrank("");
-                        rankaclicked = false;
-                    }
+                    dorankfilter(ranklclicked, "l");
                 }),
 
                 // Filter Region
@@ -312,90 +191,30 @@
         });
     </script>
 
-    <style type="text/css">
-        .nightmareimage {
-            width: 60px;
-            display: block;
-            margin: auto;
-        }
-
-        .elementimage {
-            width: 25px;
-            display: block;
-            margin: auto;
-        }
-
-        .rankimage {
-            width: 30px;
-            display: block;
-            margin: auto;
-        }
-
-        .filterimage {
-            width: 30px;
-            display: block;
-            margin: auto;
-        }
-
-        .filterbutton {
-            width: 125px;
-            display: block;
-            margin: auto;
-            background-color: #4b4642;
-        }
-
-        .filterbutton:hover, .filterbutton:focus, .filterbutton:active:focus, .filterbutton:active:hover {
-            background-color: #635f53;
-        }
-
-        .labeltag {
-            margin: 5px;
-            background-color: #4b4642;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 165px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            padding-top: 50px;
-        }
-
-        .main {
-            margin-left: 150px;
-            padding: 50px;
-        }
-
-        hr {
-            border-top: 1px solid #ababab;
-        }
-    </style>
+    <link href="resources/css/datadisplay.css" rel="stylesheet">
 </head>
 
-<body style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+<body style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
     <div id="wrapper">
 
         <div id="navigationbar"></div>
 
         <div id="page-wrapper">
-            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(assets/ui/background.png); background-color: goldenrod">
+            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                 <h1 class="page-header">Filter</h1>
                 <div class="container" style="width: 100%;">
                     <div>
                         <!-- Filter Element -->
                         <label id="elementfire" class="button">
-                            <input type="image" src="assets/ui/elementfire.png" class="filterimage" name="elementfire">
+                            <input type="image" src="resources/images/ui/elementfire.png" class="filterimage" name="elementfire">
                         </label>
 
                         <label id="elementwind" class="button">
-                            <input type="image" src="assets/ui/elementwind.png" class="filterimage" name="elementwind">
+                            <input type="image" src="resources/images/ui/elementwind.png" class="filterimage" name="elementwind">
                         </label>
 
                         <label id="elementwater" class="button">
-                            <input type="image" src="assets/ui/elementwater.png" class="filterimage" name="elementwater">
+                            <input type="image" src="resources/images/ui/elementwater.png" class="filterimage" name="elementwater">
                         </label>
 
                         <hr>
@@ -403,19 +222,19 @@
 
                         <!-- Filter Rank -->
                         <label id="rankl" class="button">
-                            <input type="image" src="assets/ui/rankl.png" class="filterimage" name="rankl">
+                            <input type="image" src="resources/images/ui/rankl.png" class="filterimage" name="rankl">
                         </label>
 
                         <label id="rankss" class="button">
-                            <input type="image" src="assets/ui/rankss.png" class="filterimage" name="rankss">
+                            <input type="image" src="resources/images/ui/rankss.png" class="filterimage" name="rankss">
                         </label>
 
                         <label id="ranks" class="button">
-                            <input type="image" src="assets/ui/ranks.png" class="filterimage" name="ranks">
+                            <input type="image" src="resources/images/ui/ranks.png" class="filterimage" name="ranks">
                         </label>
 
                         <label id="ranka" class="button">
-                            <input type="image" src="assets/ui/ranka.png" class="filterimage" name="ranka">
+                            <input type="image" src="resources/images/ui/ranka.png" class="filterimage" name="ranka">
                         </label>
 
                         <hr>
@@ -443,7 +262,7 @@
                 <h1 class="page-header">Nightmares</h1>
                 <div class="row">
                     <div class="panel panel-default">
-                        <div class="panel-body" style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+                        <div class="panel-body" style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                             <table id="nightmares" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <thead>
                                     <tr>

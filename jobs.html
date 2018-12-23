@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" type="img/ico" href="assets/ui/favicon.png">
+    <link rel="icon" type="img/ico" href="resources/images/ui/favicon.png">
 
     <title>Jobs</title>
 
@@ -62,87 +62,12 @@
     </script>
 
     <!-- Data Display Script-->
+    <script type="text/javascript" src="resources/js/filterfunctions.js"></script>
+
     <script type="text/javascript" class="init">
         $(document).ready(function () {
-
-            var typecrystalclicked = false;
-            var typehammerclicked = false;
-            var typeinstrumentclicked = false;
-            var typerangedclicked = false;
-            var typespearclicked = false;
-            var typestaffclicked = false;
-            var typeswordclicked = false;
-            var typetomeclicked = false;
-
-            var character2bclicked = false;
-            var character9sclicked = false;
-            var charactera2clicked = false;
-            var characteraccordclicked = false;
-            var characteraliceclicked = false;
-            var characterboymikhailclicked = false;
-            var characterbriarroseclicked = false;
-            var charactercinderellaclicked = false;
-            var characterdorothyclicked = false;
-            var characteremilclicked = false;
-            var charactergretelclicked = false;
-            var characterkaguyaclicked = false;
-            var characterlittlemermaidclicked = false;
-            var characternutcrackerclicked = false;
-            var characteroneclicked = false;
-            var characterpinocchioclicked = false;
-            var characterredridinghoodclicked = false;
-            var charactersnowwhiteclicked = false;
-            var characterzeroclicked = false;
-
-            var regionglobalclicked = false;
-
-            var weaponunlockclicked = false;
-
-            function filtertype(name) {
-                $('#jobs').DataTable().column(6).search(name).draw();
-            }
-
-            function activatetype(currenttype) {
-                $("#type" + currenttype).css('background', '#4b4642');
-            }
-
-            function deactivatetype() {
-                $("#typecrystal").css('background', '');
-                $("#typehammer").css('background', '');
-                $("#typeinstrument").css('background', '');
-                $("#typeranged").css('background', '');
-                $("#typespear").css('background', '');
-                $("#typestaff").css('background', '');
-                $("#typesword").css('background', '');
-                $("#typetome").css('background', '');
-            }
-
-            function filterregion(name) {
-                $('#jobs').DataTable().column(7).search(name).draw();
-            }
-
-            function activateregion(currentregion) {
-                $("#region" + currentregion).css('background', 'black');
-            }
-
-            function deactivateregion() {
-                $("#regionglobal").css('background', '');
-            }
-
-            function filterweaponunlock(name) {
-                $('#jobs').DataTable().column(5).search(name).draw();
-            }
-
-            function activateweaponunlock(currentjob) {
-                $("#" + currentjob).css('background', 'black');
-            }
-
-            function deactivateweaponunlock() {
-                $("#weaponunlock").css('background', '');
-            }
-
             $('#jobs').DataTable({
-                ajax: "jsonfiles/jobs.json",
+                ajax: "resources/data/jobs.json",
                 pageLength: 25,
                 columns: [
                     {
@@ -153,138 +78,78 @@
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/jobs/CharacterS' + data[2] + '.png" class="cardimage"/>' +
+                            return '<img src="resources/images/jobs/CharacterS' + data[2] + '.png" class="cardimage"/>' +
                                 '<span style="display:none;">' + data[2] + '</span>';
                         }
                     },
                     {
+                        data: 3,
+                        visible: false,
+                    },
+                    {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/jobs/CharacterIcon' + data[3] + '.png" class="cardimage"/>' +
-                                '<span style="display:none;">' + data[3] + '</span>';
+                            return '<img src="resources/images/jobs/CharacterIcon' + data[4] + '.png" class="cardimage"/>' +
+                                '<span style="display:none;">' + data[4] + '</span>';
                         }
                     },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            if (data[4] == "") {
+                            if (data[5] == "") {
                                 return '';
                             } else {
-                                return '<img src="assets/weapons/CardS' + data[4] + '.png" class="cardimage"/>' +
-                                    '<span style="display:none;">' + data[4] + '</span>';
+                                return '<img src="resources/images/weapons/CardS' + data[5] + '.png" class="cardimage"/>' +
+                                    '<span style="display:none;">' + data[5] + '</span>';
                             }
                         }
                     },
                     {
-                        data: 5,
+                        data: 6,
                         visible: false
                     },
                     {
                         data: null,
                         render: function (data, type, row) {
-                            return '<img src="assets/ui/type' + data[6] + '.png" class="typeimage"/>' +
-                                '<span style="display:none;">' + data[6] + '</span>';
+                            return '<img src="resources/images/ui/type' + data[7] + '.png" class="typeimage"/>' +
+                                '<span style="display:none;">' + data[7] + '</span>';
                         }
                     },
-                    { data: 7 }
+                    { data: 8 }
                 ]
             },
 
                 // Filter Type
                 $('#typecrystal').on('click', function () {
-                    deactivatetype();
-                    if (!typecrystalclicked) {
-                        filtertype("crystal");
-                        activatetype("crystal");
-                        typecrystalclicked = true;
-                    } else {
-                        filtertype("");
-                        typecrystalclicked = false;
-                    }
+                    dotypefilter(typecrystalclicked, "crystal");
                 }),
 
                 $('#typehammer').on('click', function () {
-                    deactivatetype();
-                    if (!typehammerclicked) {
-                        filtertype("hammer");
-                        activatetype("hammer");
-                        typehammerclicked = true;
-                    } else {
-                        filtertype("");
-                        typehammerclicked = false;
-                    }
+                    dotypefilter(typehammerclicked, "hammer");
                 }),
 
                 $('#typeinstrument').on('click', function () {
-                    deactivatetype();
-                    if (!typeinstrumentclicked) {
-                        filtertype("instrument");
-                        activatetype("instrument");
-                        typeinstrumentclicked = true;
-                    } else {
-                        filtertype("");
-                        typeinstrumentclicked = false;
-                    }
+                    dotypefilter(typeinstrumentclicked, "instrument");
                 }),
 
                 $('#typeranged').on('click', function () {
-                    deactivatetype();
-                    if (!typerangedclicked) {
-                        filtertype("ranged");
-                        activatetype("ranged");
-                        typerangedclicked = true;
-                    } else {
-                        filtertype("");
-                        typerangedclicked = false;
-                    }
+                    dotypefilter(typerangedclicked, "ranged");
                 }),
 
                 $('#typespear').on('click', function () {
-                    deactivatetype();
-                    if (!typespearclicked) {
-                        filtertype("spear");
-                        activatetype("spear");
-                        typespearclicked = true;
-                    } else {
-                        filtertype("");
-                        typespearclicked = false;
-                    }
+                    dotypefilter(typespearclicked, "spear");
                 }),
 
                 $('#typestaff').on('click', function () {
-                    deactivatetype();
-                    if (!typestaffclicked) {
-                        filtertype("staff");
-                        activatetype("staff");
-                        typestaffclicked = true;
-                    } else {
-                        filtertype("");
-                        typestaffclicked = false;
-                    }
+                    dotypefilter(typestaffclicked, "staff");
                 }),
 
                 $('#typesword').on('click', function () {
-                    deactivatetype();
-                    if (!typeswordclicked) {
-                        filtertype("sword");
-                        activatetype("sword");
-                        typeswordclicked = true;
-                    } else {
-                        filtertype("");
-                        typeswordclicked = false;
-                    }
+                    dotypefilter(typeswordclicked, "sword");
                 }),
 
                 $('#typetome').on('click', function () {
-                    deactivatetype();
-                    if (!typetomeclicked) {
-                        filtertype("tome");
-                        activatetype("tome");
-                        typetomeclicked = true;
-                    } else {
-                        filtertype("");
-                        typetomeclicked = false;
-                    }
+                    dotypefilter(typetomeclicked, "tome");
                 }),
 
                 // Filter Region
@@ -300,125 +165,145 @@
                     }
                 }),
 
-                // Filter Job
-                $('#weaponunlock').on('click', function () {
-                    deactivateweaponunlock();
-                    if (!weaponunlockclicked) {
-                        filterweaponunlock("gacha");
-                        activateweaponunlock("weaponunlock");
-                        weaponunlockclicked = true;
+                // Filter Weapon Unlock
+                $('#jobweapon').on('click', function () {
+                    deactivatejobweapon();
+                    if (!jobweaponclicked) {
+                        filterjobweapon("gacha");
+                        activatejobweapon("jobweapon");
+                        jobweaponclicked = true;
                     } else {
-                        filterweaponunlock("");
-                        weaponunlockclicked = false;
+                        filterjobweapon("");
+                        jobweaponclicked = false;
                     }
+                }),
+
+                // Filter Character
+                $('#character2b').on('click', function () {
+                    docharacterfilter(character2bclicked, "2b");
+                }),
+
+                $('#character9s').on('click', function () {
+                    docharacterfilter(character9sclicked, "9s");
+                }),
+
+                $('#charactera2').on('click', function () {
+                    docharacterfilter(charactera2clicked, "a2");
+                }),
+
+                $('#characteraccord').on('click', function () {
+                    docharacterfilter(characteraccordclicked, "accord");
+                }),
+
+                $('#characteralice').on('click', function () {
+                    docharacterfilter(characteraliceclicked, "alice");
+                }),
+
+                $('#characterboymikhail').on('click', function () {
+                    docharacterfilter(characterboymikhailclicked, "boymikhail");
+                }),
+
+                $('#characterbriarrose').on('click', function () {
+                    docharacterfilter(characterbriarroseclicked, "briarrose");
+                }),
+
+                $('#charactercinderella').on('click', function () {
+                    docharacterfilter(charactercinderellaclicked, "cinderella");
+                }),
+
+                $('#characterdorothy').on('click', function () {
+                    docharacterfilter(characterdorothyclicked, "dorothy");
+                }),
+
+                $('#characteremil').on('click', function () {
+                    docharacterfilter(characteremilclicked, "emil");
+                }),
+
+                $('#charactergretel').on('click', function () {
+                    docharacterfilter(charactergretelclicked, "gretel");
+                }),
+
+                $('#characterkaguya').on('click', function () {
+                    docharacterfilter(characterkaguyaclicked, "kaguya");
+                }),
+
+                $('#characterlittlemermaid').on('click', function () {
+                    docharacterfilter(characterlittlemermaidclicked, "littlemermaid");
+                }),
+
+                $('#characternutcracker').on('click', function () {
+                    docharacterfilter(characternutcrackerclicked, "nutcracker");
+                }),
+
+                $('#characterone').on('click', function () {
+                    docharacterfilter(characteroneclicked, "one");
+                }),
+
+                $('#characterpinocchio').on('click', function () {
+                    docharacterfilter(characterpinocchioclicked, "pinocchio");
+                }),
+
+                $('#characterredridinghood').on('click', function () {
+                    docharacterfilter(characterredridinghoodclicked, "redridinghood");
+                }),
+
+                $('#charactersnowwhite').on('click', function () {
+                    docharacterfilter(charactersnowwhiteclicked, "snowwhite");
+                }),
+
+                $('#characterzero').on('click', function () {
+                    docharacterfilter(characterzeroclicked, "zero");
                 }),
             );
         });
     </script>
 
-    <style type="text/css">
-        .cardimage {
-            width: 60px;
-            display: block;
-            margin: auto;
-        }
-
-        .typeimage {
-            width: 25px;
-            display: block;
-            margin: auto;
-        }
-
-        .filterimage {
-            width: 30px;
-            display: block;
-            margin: auto;
-        }
-
-        .filterbutton {
-            width: 125px;
-            display: block;
-            margin: auto;
-            background-color: #4b4642;
-        }
-
-        .filterbutton:hover,
-        .filterbutton:focus,
-        .filterbutton:active:focus,
-        .filterbutton:active:hover {
-            background-color: #635f53;
-        }
-
-        .labeltag {
-            margin: 5px;
-            background-color: #4b4642;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 165px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            padding-top: 50px;
-        }
-
-        .main {
-            margin-left: 150px;
-            padding: 50px;
-        }
-
-        hr {
-            border-top: 1px solid #ababab;
-        }
-    </style>
+    <link href="resources/css/datadisplay.css" rel="stylesheet">
 </head>
 
-<body style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+<body style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
     <div id="wrapper">
 
         <div id="navigationbar"></div>
 
         <div id="page-wrapper">
-            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(assets/ui/background.png); background-color: goldenrod">
+            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                 <h1 class="page-header">Filter</h1>
                 <div class="container" style="width: 100%;">
                     <div>
                         <!-- Filter Type -->
                         <label id="typecrystal" class="button">
-                            <input type="image" src="assets/ui/typecrystal.png" class="filterimage" name="typecrystal">
+                            <input type="image" src="resources/images/ui/typecrystal.png" class="filterimage" name="typecrystal">
                         </label>
 
                         <label id="typehammer" class="button">
-                            <input type="image" src="assets/ui/typehammer.png" class="filterimage" name="typehammer">
+                            <input type="image" src="resources/images/ui/typehammer.png" class="filterimage" name="typehammer">
                         </label>
 
                         <label id="typeinstrument" class="button">
-                            <input type="image" src="assets/ui/typeinstrument.png" class="filterimage" name="typeinstrument">
+                            <input type="image" src="resources/images/ui/typeinstrument.png" class="filterimage" name="typeinstrument">
                         </label>
 
                         <label id="typeranged" class="button">
-                            <input type="image" src="assets/ui/typeranged.png" class="filterimage" name="typeranged">
+                            <input type="image" src="resources/images/ui/typeranged.png" class="filterimage" name="typeranged">
                         </label>
 
                         </br>
 
                         <label id="typespear" class="button">
-                            <input type="image" src="assets/ui/typespear.png" class="filterimage" name="typespear">
+                            <input type="image" src="resources/images/ui/typespear.png" class="filterimage" name="typespear">
                         </label>
 
                         <label id="typestaff" class="button">
-                            <input type="image" src="assets/ui/typestaff.png" class="filterimage" name="typestaff">
+                            <input type="image" src="resources/images/ui/typestaff.png" class="filterimage" name="typestaff">
                         </label>
 
                         <label id="typesword" class="button">
-                            <input type="image" src="assets/ui/typesword.png" class="filterimage" name="typesword">
+                            <input type="image" src="resources/images/ui/typesword.png" class="filterimage" name="typesword">
                         </label>
 
                         <label id="typetome" class="button">
-                            <input type="image" src="assets/ui/typetome.png" class="filterimage" name="typetome">
+                            <input type="image" src="resources/images/ui/typetome.png" class="filterimage" name="typetome">
                         </label>
                     </div>
 
@@ -434,9 +319,39 @@
                     </hr>
 
                     <div>
-                        <!-- Filter Weapon Unlock -->
-                        <button id="weaponunlock" type="button" class="btn btn-primary btn-sm filterbutton">Weapon
-                            Unlock</button>
+                        <!-- Filter Job Weapon -->
+                        <button id="jobweapon" type="button" class="btn btn-primary btn-sm filterbutton">Job Weapons</button>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Character -->
+                        <button id="character2b" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">2B</button>
+                        <button id="character9s" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">9S</button>
+                        <button id="charactera2" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">A2</button>
+                        <button id="characteraccord" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Accord</button>
+                        <button id="characteralice" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Alice</button>
+                        <button id="characterboymikhail" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Boy
+                            Mikhail</button>
+                        <button id="characterbriarrose" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Briar
+                            Rose</button>
+                        <button id="charactercinderella" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Cinderella</button>
+                        <button id="characterdorothy" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Dorothy</button>
+                        <button id="characteremil" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Emil</button>
+                        <button id="charactergretel" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Gretel</button>
+                        <button id="characterkaguya" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Kaguya</button>
+                        <button id="characterlittlemermaid" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Little
+                            Mermaid</button>
+                        <button id="characternutcracker" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Nutcracker</button>
+                        <button id="characterone" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">One</button>
+                        <button id="characterpinocchio" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Pinocchio</button>
+                        <button id="characterredridinghood" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Red
+                            Riding Hood</button>
+                        <button id="charactersnowwhite" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Snow
+                            White</button>
+                        <button id="characterzero" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Zero</button>
                     </div>
                 </div>
             </div>
@@ -445,13 +360,14 @@
                 <h1 class="page-header">Jobs</h1>
                 <div class="row">
                     <div class="panel panel-default">
-                        <div class="panel-body" style="background-image: url(assets/ui/background.png); background-color: goldenrod">
+                        <div class="panel-body" style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
                             <table id="jobs" width="100%" class="table table-bordered" style="font-size: 16px;">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Job</th>
                                         <th>Character</th>
+                                        <th>Character Name</th>
                                         <th>Icon</th>
                                         <th>Weapon</th>
                                         <th>Gacha</th>
