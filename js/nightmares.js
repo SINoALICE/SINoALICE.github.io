@@ -99,10 +99,8 @@ function getNightmares(){
         548,
         549,
         550,
-        581,
-        582,
         583,
-        584,
+        584,        
     ]
 
     return nightmares;
