@@ -229,7 +229,10 @@ margin:20px auto auto;
 .container2 {
 width:100%;
 max-width:1200px;
+background-color: gray;
+/*
 background:url(../images/bg-main.png);
+*/
 position:relative;
 border:4px double #84481b;
 border-radius:3px;
