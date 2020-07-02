@@ -10,8 +10,7 @@ body {
 }
 
 .flair {
-    opacity:0.4;
-    filter:alpha(opacity=40);
+    filter: brightness(40%);
 }
 
 .flair:not(.selected):hover {
@@ -21,7 +20,7 @@ body {
 .flair.selected {
     border:3px solid #f33b3b;
     border-radius:2px;
-    opacity:1;
+    filter: brightness(1);
 }
 
 .flair.rainbow {
