@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1024">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="img/ico" href="resources/images/ui/favicon.png">
+
+    <title>Weapons</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
+    <!-- DataTable Checkbox StateSave-->
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css"
+        rel="stylesheet" />
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+
+    <!-- Navigation Bar Script-->
+    <script>
+        $(function () {
+            $("#navigationbar").load("navbar.html");
+        });
+    </script>
+
+    <!-- Data Display Script-->
+    <script type="text/javascript" src="resources/js/filterfunctions.js"></script>
+
+    <script type="text/javascript" class="init">
+        $(document).ready(function () {
+            $('#weapons').DataTable({
+                ajax: "resources/data/weapons.json",
+                pageLength: 25,
+                stateSave: true,
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                            header: function (row) {
+                                var data = row.data();
+                                return '<img src="resources/images/weapons/CardS' + data[0] + '.png" class="modalimage"/> ' + 'Details for ' + data[1];
+                            }
+                        }),
+                        renderer: function (api, rowIdx, columns) {
+                            var data = $.map(columns, function (col, i) {
+                                return col.hidden ?
+                                    '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                    '<td class="modaltitle">' + col.title + '</td> ' +
+                                    '<td class="modaldata">' + col.data + '</td>' +
+                                    '</tr>' :
+                                    '';
+                            }).join('');
+
+                            return data ?
+                                $('<table style="width: 100%"/>').append(data) :
+                                false;
+                        }
+                    }
+                },
+                columns: [
+                    { data: 0 },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<img src="resources/images/weapons/CardS' + data[0] + '.png" class="weaponimage"/>';
+                        }
+                    },
+                    { data: 1 },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<img src="resources/images/ui/type' + data[2] + '.png" class="typeimage"/>' +
+                                '<span style="display:none;">' + data[2] + '</span>';
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<img src="resources/images/ui/element' + data[3] + '.png" class="elementimage"/>' +
+                                '<span style="display:none;">' + data[3] + '</span>';
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return '<img src="resources/images/ui/rank' + data[4] + '.png" class="rankimage"/>' +
+                                '<span style="display:none;">' + data[4] + '</span>';
+                        }
+                    },
+                    { data: 5 },
+                    { data: 6 },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return data[7] + ' - ' + data[8];
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return data[9] + ' - ' + data[10];
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            return data[11] + ' - ' + data[12];
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            var skilltag = "";
+                            var globaltag = "";
+                            var jobtag = "";
+
+                            skilltag = '<span class="label label-primary labeltag">' + data[13] + '</span>'
+
+                            if (data[14] == "Global") {
+                                globaltag = '<span class="label label-primary labeltag">' + data[14] + '</span>'
+                            }
+
+                            if (data[15] == "Job Weapon") {
+                                jobtag = '<span class="label label-primary labeltag">' + data[15] + '</span>'
+                            }
+
+                            return skilltag + globaltag + jobtag;
+                        }
+                    },
+                    {
+                        data: 13,
+                        visible: false
+                    },
+                    {
+                        data: 14,
+                        visible: false
+                    },
+                    {
+                        data: 15,
+                        visible: false
+                    },
+                    {
+                        data: 0,
+                        targets: 0,
+                        checkboxes: {
+                            selectRow: false
+                        }
+                    }
+                ]
+            },
+
+                // Filter Type
+                $('#typecrystal').on('click', function () {
+                    dotypefilter(typecrystalclicked, "crystal");
+                }),
+
+                $('#typehammer').on('click', function () {
+                    dotypefilter(typehammerclicked, "hammer");
+                }),
+
+                $('#typeinstrument').on('click', function () {
+                    dotypefilter(typeinstrumentclicked, "instrument");
+                }),
+
+                $('#typeranged').on('click', function () {
+                    dotypefilter(typerangedclicked, "ranged");
+                }),
+
+                $('#typespear').on('click', function () {
+                    dotypefilter(typespearclicked, "spear");
+                }),
+
+                $('#typestaff').on('click', function () {
+                    dotypefilter(typestaffclicked, "staff");
+                }),
+
+                $('#typesword').on('click', function () {
+                    dotypefilter(typeswordclicked, "sword");
+                }),
+
+                $('#typetome').on('click', function () {
+                    dotypefilter(typetomeclicked, "tome");
+                }),
+
+                // Filter Element
+                $('#elementfire').on('click', function () {
+                    doelementfilter(elementfireclicked, "fire");
+                }),
+
+                $('#elementwind').on('click', function () {
+                    doelementfilter(elementwindclicked, "wind");
+                }),
+
+                $('#elementwater').on('click', function () {
+                    doelementfilter(elementwaterclicked, "water");
+                }),
+
+                // Filter Ranking
+                $('#ranka').on('click', function () {
+                    dorankfilter(rankaclicked, "a");
+                }),
+
+                $('#ranks').on('click', function () {
+                    dorankfilter(ranksclicked, "s");
+                }),
+
+                $('#rankss').on('click', function () {
+                    dorankfilter(rankssclicked, "ss");
+                }),
+
+                $('#rankl').on('click', function () {
+                    dorankfilter(ranklclicked, "l");
+                }),
+                // Filter Region
+                $('#regionglobal').on('click', function () {
+                    deactivateregion();
+                    if (!regionglobalclicked) {
+                        filterregion("Global");
+                        activateregion("global");
+                        regionglobalclicked = true;
+                    } else {
+                        filterregion("");
+                        regionglobalclicked = false;
+                    }
+                }),
+
+                // Filter Job
+                $('#jobweapon').on('click', function () {
+                    deactivatejobweapon();
+                    if (!jobweaponclicked) {
+                        filterjobweapon("Job Weapon");
+                        activatejobweapon("jobweapon");
+                        jobweaponclicked = true;
+                    } else {
+                        filterjobweapon("");
+                        jobweaponclicked = false;
+                    }
+                }),
+
+                // Filter Skill
+                $('#skilldamage').on('click', function () {
+                    doskillfilter(skilldamageclicked, "damage");
+                }),
+            );
+        });
+    </script>
+
+    <link href="resources/css/datadisplay.css" rel="stylesheet">
+</head>
+
+<body onLoad="resetfilter()" style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
+    <div id="wrapper">
+
+        <div id="navigationbar"></div>
+
+        <div id="page-wrapper">
+            <div class="sidenav" style="text-align: center; border-right: solid 1px; background-image: url(resources/images/ui/background.png); background-color: goldenrod">
+                <h1 class="page-header">Filter</h1>
+                <div class="container" style="width: 100%;">
+                    <div>
+                        <!-- Filter Type -->
+                        <label id="typecrystal" class="button">
+                            <input type="image" src="resources/images/ui/typecrystal.png" class="filterimage" name="typecrystal">
+                        </label>
+
+                        <label id="typehammer" class="button">
+                            <input type="image" src="resources/images/ui/typehammer.png" class="filterimage" name="typehammer">
+                        </label>
+
+                        <label id="typeinstrument" class="button">
+                            <input type="image" src="resources/images/ui/typeinstrument.png" class="filterimage" name="typeinstrument">
+                        </label>
+
+                        <label id="typeranged" class="button">
+                            <input type="image" src="resources/images/ui/typeranged.png" class="filterimage" name="typeranged">
+                        </label>
+
+                        </br>
+
+                        <label id="typespear" class="button">
+                            <input type="image" src="resources/images/ui/typespear.png" class="filterimage" name="typespear">
+                        </label>
+
+                        <label id="typestaff" class="button">
+                            <input type="image" src="resources/images/ui/typestaff.png" class="filterimage" name="typestaff">
+                        </label>
+
+                        <label id="typesword" class="button">
+                            <input type="image" src="resources/images/ui/typesword.png" class="filterimage" name="typesword">
+                        </label>
+
+                        <label id="typetome" class="button">
+                            <input type="image" src="resources/images/ui/typetome.png" class="filterimage" name="typetome">
+                        </label>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Element -->
+                        <label id="elementfire" class="button">
+                            <input type="image" src="resources/images/ui/elementfire.png" class="filterimage" name="elementfire">
+                        </label>
+
+                        <label id="elementwind" class="button">
+                            <input type="image" src="resources/images/ui/elementwind.png" class="filterimage" name="elementwind">
+                        </label>
+
+                        <label id="elementwater" class="button">
+                            <input type="image" src="resources/images/ui/elementwater.png" class="filterimage" name="elementwater">
+                        </label>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Rank -->
+                        <label id="rankl" class="button">
+                            <input type="image" src="resources/images/ui/rankl.png" class="filterimage" name="rankl">
+                        </label>
+
+                        <label id="rankss" class="button">
+                            <input type="image" src="resources/images/ui/rankss.png" class="filterimage" name="rankss">
+                        </label>
+
+                        <label id="ranks" class="button">
+                            <input type="image" src="resources/images/ui/ranks.png" class="filterimage" name="ranks">
+                        </label>
+
+                        <label id="ranka" class="button">
+                            <input type="image" src="resources/images/ui/ranka.png" class="filterimage" name="ranka">
+                        </label>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Region -->
+                        <button id="regionglobal" type="button" class="btn btn-primary btn-sm filterbutton">Global Gear</button>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Job Weapons -->
+                        <button id="jobweapon" type="button" class="btn btn-primary btn-sm filterbutton">Job Weapons</button>
+                    </div>
+
+                    <hr>
+                    </hr>
+
+                    <div>
+                        <!-- Filter Skill -->
+                        <button id="skilldamage" type="button" class="btn btn-primary btn-sm filterbutton filterbuttongroup">Damage
+                            Skills</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">
+                <h1 class="page-header">Weapons</h1>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-body" style="background-image: url(resources/images/ui/background.png); background-color: goldenrod">
+                            <table id="weapons" width="100%" class="table table-bordered" style="font-size: 16px;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Weapon</th>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Element</th>
+                                        <th>Rank</th>
+                                        <th>Cost</th>
+                                        <th>Max Stats</th>
+                                        <th class="none" style="display:none;">Story Skill</th>
+                                        <th class="none" style="display:none;">Colloseum Skill</th>
+                                        <th class="none" style="display:none;">Colloseum Aid Skill</th>
+                                        <th class="none" style="display:none;">Tags</th>
+                                        <th class="none" style="display:none;">Skill Tags</th>
+                                        <th class="none" style="display:none;">Release Tag</th>
+                                        <th class="none" style="display:none;">Job Weapon Tag</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
