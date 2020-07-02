@@ -1,89 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
-  <title>SINoALICE Checklist</title>
-  <!--tracking-->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136683124-5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1024">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    gtag('config', 'UA-136683124-5');
-  </script>
+    <link rel="icon" type="img/ico" href="resources/images/ui/favicon.png">
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>SINoALICE Database</title>
 
-  <!--stylesheets-->
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-  <link rel="stylesheet" href="css/flairs.css" type="text/css" media="all" />
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!--scripts-->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/flairs.js"></script>
-  <script type="text/javascript" src="js/scripts.js"></script>
-  <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <!-- MetisMenu CSS -->
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-  <!--meta-->
-  <meta charset="utf-8">
-  <meta name="author" content="antonlabz">
-  <meta name="description" content="Inventory Checklist for SINoALICE">
+    <!-- DataTables CSS -->
+    <link href="vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="dist/js/sb-admin-2.js"></script>
+
+    <!-- Menu Design -->
+    <style type="text/css">
+        .fontsetting {
+            color: black;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
-<body>
-  <noscript>JavaScript is required to run this page.</noscript>
+<body background="resources/images/ui/background.png">
+    <div style="text-align: center">
 
-  <div class="header"></div>
+        <div class="fontsetting">
+            <a href="jobs"> <img src="resources/images/ui/menujob.png"> </a>
+            </br>
+            Jobs
+        </div>
 
-  <div class="buttons">
-    <button id="select-all">Select All</button>
-    <button id="select-none">Reset</button>
-  </div>
+        </br>
 
-  <h2 class="headercaption">Weapons</h2>
-  <div class="container2">
-    <span id="counter1"></span>
-    <div id="weapons"></div>
-  </div>
+        <div class="fontsetting">
+            <a href="weapons"> <img src="resources/images/ui/menuweapon.png"></a>
+            </br>
+            Weapons
+        </div>
 
-  <br><br>
+        </br>
 
-  <h2 class="headercaption">Jobs</h2>
-  <div class="container2">
-    <span id="counter2"></span>
-    <div id="jobs"></div>
-  </div>
+        <div class="fontsetting">
+            <a href="armor"><img src="resources/images/ui/menuarmor.png"> </a>
+            </br>
+            Armor
+        </div>
 
-  <br><br>
+        </br>
 
-  <h2 class="headercaption">Nightmares</h2>
-  <div class="container2">
-    <span id="counter3"></span>
-      <div id="nightmares"></div>
-  </div>
+        <div class="fontsetting">
+            <a href="nightmares"> <img src="resources/images/ui/menunightmare.png"> </a>
+            </br>
+            Nightmares
+        </div>
 
-  <br><br>
+        </br>
 
-  <h2 class="headercaption">Armor</h2>
-  <div class="container2">
-    <span id="counter4"></span>
-    <div id="armor"></div>
-  </div>
+        <div class="fontsetting">
+            <a href="items"> <img src="resources/images/ui/menuitem.png"> </a>
+            </br>
+            Items
+        </div>
 
+    </div>
 </body>
 
-<footer>
-  <div style="color: black;">
-    2019 -
-    <script>
-    document.write(new Date().getFullYear());
-    </script>.
-    Original idea by <a style="color: black;" href="https://www.reddit.com/user/antonlabz/">antonlabz</a>.
-    Extended by BaqFish
-  </div>
-</footer>
 
 </html>
