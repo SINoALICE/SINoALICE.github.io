@@ -234,6 +234,12 @@ h2 {
     margin: 0 auto -40px;
     box-shadow: crimson;
     box-shadow: 3px 4px 4px 0px rgba(0,0,0,0.75);
+    width:100%;
+    max-width:1200px;
+    position:relative;
+    border:4px double #84481b;
+    border-radius:3px;
+    margin:0 auto -40px;
 }
 
 footer {
