@@ -123,16 +123,4 @@ jQuery(document).ready(function($) {
 
     countEverything();
   });
-
-  //select all button
-  $("#select-all").on("click", function() {
-    selectPage();
-    countEverything();
-  });
-
-  //clear button
-  $("#select-none").on("click", function() {
-    resetPage();
-    countEverything();
-  });
 });
