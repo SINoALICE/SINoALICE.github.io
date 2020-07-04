@@ -2,13 +2,14 @@ loadPage = function () {
     //SPECIAL FLAIRS
     loadIcons = function () {
         var categories = [
-            ['weapons', getWeapons(), 'Weapon/CardS', -4],
-            ['jobs', getJobs(), 'Job/CharacterIcon', -3],
-            ['nightmares', getNightmares(), 'Nightmare/CardS', -4],
-            ['armor', getArmor(), 'Armor/CardS', -4]
+            ['weapons', getWeapons(), 'Weapon/CardS', -4, 'flair'],
+            ['jobs', getJobs(), 'Job/CharacterIcon', -3, 'flair'],
+            ['nightmares', getNightmares(), 'Nightmare/CardS', -4, 'flair'],
+            ['armor', getArmor(), 'Armor/CardS', -4, 'flair'],
+            ['characters', getCharacters(), 'CharacterImage/', -3, 'characters']
         ];
 
-        //creates HTML for fokin everything
+        //creates HTML for everything
         for (var cat in categories) {
             var contain = document.getElementById(categories[cat][0]);
 
@@ -20,7 +21,7 @@ loadPage = function () {
                 }
                 else {
                     var icon = document.createElement('img');
-                    icon.setAttribute('class', 'flair');
+                    icon.setAttribute('class', categories[cat][4]);
                     icon.setAttribute('id', categories[cat][0][0] + categories[cat][1][x]);
                     icon.setAttribute('src', 'images/' + categories[cat][2] + (('0000' + categories[cat][1][x]).substr(categories[cat][3])) + '.png');
 

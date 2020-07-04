@@ -19,8 +19,8 @@ function readAllStorage() {
   for (i = 0; i < nbItem; i += 1) {
     storeKey = localStorage.key(i);
     store.push({
-      "key" : storeKey,
-      "value" : readStorageValue(storeKey)
+      "key": storeKey,
+      "value": readStorageValue(storeKey)
     });
   }
   return store;
@@ -30,8 +30,8 @@ function updatePage() {
   //check local storage
   const store = readAllStorage();
   //restore the selected class
-  $.each(store, function(index, elem) {
-      $("#" + elem.key).addClass("selected");
+  $.each(store, function (index, elem) {
+    $("#" + elem.key).addClass("selected");
   });
 }
 
@@ -43,21 +43,21 @@ function selectPage() {
   var idStore = new Array();
 
   //loops every ID and stores key into array
-  for(var i = 0; i < className.length; i++) {
-    idStore.push({"key" : className[i].id, "value" : className[i].className});
+  for (var i = 0; i < className.length; i++) {
+    idStore.push({ "key": className[i].id, "value": className[i].className });
   }
 
   //add IDs from array to local storage
-  for(var j=0; j<idStore.length; j++) {
-      updateStorage(idStore[j]['key'], null, true);
-    }
+  for (var j = 0; j < idStore.length; j++) {
+    updateStorage(idStore[j]['key'], null, true);
   }
+}
 
 function resetPage() {
   //check local storage
   const store = readAllStorage();
   //delete the selected class
-  $.each(store, function(index, elem) {
+  $.each(store, function (index, elem) {
     $("#" + elem.key).removeClass("selected");
   });
   //clears local storage
@@ -90,7 +90,6 @@ function countNightmares() {
   var total = $("#nightmares .flair").length;
 
   $('#counter3').html("<span class='cl'>Nightmares Owned - </span>" + amount + "/" + (total));
-  countArmor();
 }
 
 function countArmor() {
@@ -98,10 +97,9 @@ function countArmor() {
   var total = $("#armor .flair").length;
 
   $('#counter4').html("<span class='cl'>Armor Owned - </span>" + amount + "/" + (total));
-  countJobs();
 }
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
   //restore previous state
   updatePage();
@@ -110,7 +108,7 @@ jQuery(document).ready(function($) {
   countEverything();
 
   //main function for selecting icons
-  $(".container2 img").mousedown(function(e) {
+  $(".container2 img").mousedown(function (e) {
     const $obj = $(this);
 
     $obj.toggleClass("selected");
