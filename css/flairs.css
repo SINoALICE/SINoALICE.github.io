@@ -11,9 +11,7 @@
 }
 
 .characters {
-  height: 200px;
-  width: 200px;
-  cursor: pointer;
+  max-width: 200px;
   margin-right: 6px;
   margin-top: 6px;
   border: 3px solid transparent;
