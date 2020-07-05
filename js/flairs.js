@@ -1,3 +1,5 @@
+var sorting = 0;
+
 loadPage = function () {
     //SPECIAL FLAIRS
     loadIcons = function () {
@@ -6,12 +8,14 @@ loadPage = function () {
             ['jobs', getJobs(), 'Job/CharacterIcon', -3, 'flair'],
             ['nightmares', getNightmares(), 'Nightmare/CardS', -4, 'flair'],
             ['armor', getArmor(), 'Armor/CardS', -4, 'flair'],
-            ['characters', getCharacters(), 'CharacterImage/', -3, 'characters']
+            ['characters', getCharacters(sorting), 'CharacterImage/', -3, 'characters']
         ];
 
         //creates HTML for everything
         for (var cat in categories) {
             var contain = document.getElementById(categories[cat][0]);
+
+            contain.innerHTML = '';
 
             for (var x in categories[cat][1]) {
                 if (categories[cat][1][x] === -1) {
@@ -95,6 +99,17 @@ function toggleVisibility() {
     } else {
         x.style.display = "none";
     }
+}
+
+function changeSorting() {
+    if (sorting == 0) {
+        sorting = 1;
+    } else if (sorting == 1) {
+        sorting = 2;
+    } else if (sorting == 2) {
+        sorting = 0;
+    }
+    loadPage();
 }
 
 //waits for DOM to load before executing function
