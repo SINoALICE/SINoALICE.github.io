@@ -53,17 +53,6 @@ function selectPage() {
   }
 }
 
-function resetPage() {
-  //check local storage
-  const store = readAllStorage();
-  //delete the selected class
-  $.each(store, function (index, elem) {
-    $("#" + elem.key).removeClass("selected");
-  });
-  //clears local storage
-  localStorage.clear();
-}
-
 function countEverything() {
   countWeapons();
   countJobs();
@@ -99,15 +88,7 @@ function countArmor() {
   $('#counter4').html("<span class='cl'>Armor Owned - </span>" + amount + "/" + (total));
 }
 
-jQuery(document).ready(function ($) {
-
-  //restore previous state
-  updatePage();
-
-  //legend counter
-  countEverything();
-
-  //main function for selecting icons
+function enableSelect() {
   $(".container2 img").mousedown(function (e) {
     const $obj = $(this);
 
@@ -121,4 +102,19 @@ jQuery(document).ready(function ($) {
 
     countEverything();
   });
+}
+
+function enablePageFunctions() {
+  //restore previous state
+  updatePage();
+
+  //legend counter
+  countEverything();
+
+  //main function for selecting icons
+  enableSelect();
+}
+
+jQuery(document).ready(function ($) {
+  enablePageFunctions();
 });

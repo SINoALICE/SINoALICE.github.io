@@ -18,6 +18,7 @@ loadPage = function () {
             contain.innerHTML = '';
 
             for (var x in categories[cat][1]) {
+               
                 if (categories[cat][1][x] === -1) {
                     var icon_hr = document.createElement('hr');
 
@@ -109,7 +110,9 @@ function changeSorting() {
     } else if (sorting == 2) {
         sorting = 0;
     }
-    loadPage();
+    
+    loadPage();  
+    enablePageFunctions();
 }
 
 //waits for DOM to load before executing function
