@@ -66,35 +66,15 @@ loadPage = function () {
 }
 
 function toggleVisibility() {
-    var x = document.getElementById("weaponarea");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+    toggleDisplay("weaponarea");
+    toggleDisplay("jobarea");
+    toggleDisplay("nightmarearea");
+    toggleDisplay("armorarea");
+    toggleDisplay("characterarea");
+}
 
-    var x = document.getElementById("jobarea");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-
-    var x = document.getElementById("nightmarearea");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-
-    var x = document.getElementById("armorarea");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-
-    var x = document.getElementById("characterarea");
+function toggleDisplay(sourceElement){
+    var x = document.getElementById(sourceElement);
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
