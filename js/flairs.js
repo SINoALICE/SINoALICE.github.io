@@ -60,5 +60,42 @@ loadPage = function () {
     loadIcons();
 }
 
+function toggleVisibility() {
+    var x = document.getElementById("weaponarea");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+    var x = document.getElementById("jobarea");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+    var x = document.getElementById("nightmarearea");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+    var x = document.getElementById("armorarea");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+    var x = document.getElementById("characterarea");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
 //waits for DOM to load before executing function
 document.addEventListener('DOMContentLoaded', loadPage, false);

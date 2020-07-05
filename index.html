@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
   <title>SINoALICE Checklist</title>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <button onclick="toggleVisibility()">Checklist / Gallery</button>
 
   <!--stylesheets-->
   <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -31,42 +33,54 @@
 
   <div class="header"></div>
 
-  <h2 class="headercaption">Weapons</h2>
-  <div class="container2">
-    <span id="counter1"></span>
-    <div id="weapons"></div>
-  </div>
-  
-  <br><br>
+  <div id="weaponarea">
+    <h2 class="headercaption">Weapons</h2>
+    <div class="container2">
+      <span id="counter1"></span>
+      <div id="weapons"></div>
+    </div>
 
-  <h2 class="headercaption">Jobs</h2>
-  <div class="container2">
-    <span id="counter2"></span>
-    <div id="jobs"></div>
+    <br><br>
   </div>
 
-  <br><br>
+  <div id="jobarea">
+    <h2 class="headercaption">Jobs</h2>
+    <div class="container2">
+      <span id="counter2"></span>
+      <div id="jobs"></div>
+    </div>
 
-  <h2 class="headercaption">Nightmares</h2>
-  <div class="container2">
-    <span id="counter3"></span>
+    <br><br>
+  </div>
+
+  <div id="nightmarearea">
+    <h2 class="headercaption">Nightmares</h2>
+    <div class="container2">
+      <span id="counter3"></span>
       <div id="nightmares"></div>
+    </div>
+
+    <br><br>
   </div>
 
-  <br><br>
+  <div id="armorarea">
+    <h2 class="headercaption">Armor</h2>
+    <div class="container2">
+      <span id="counter4"></span>
+      <div id="armor"></div>
+    </div>
 
-  <h2 class="headercaption">Armor</h2>
-  <div class="container2">
-    <span id="counter4"></span>
-    <div id="armor"></div>
-  </div>  
-  
-  <br><br>
+    <br><br>
+  </div>
 
-  <h2 class="headercaption">Characters</h2>
-  <div class="container2">
-    <span id="counter5"></span>
-    <div id="characters"></div>
+  <div id="characterarea" style="display: none;">
+    <h2 class="headercaption">Characters</h2>
+    <div class="container2">
+      <span id="counter5"></span>
+      <div id="characters"></div>
+    </div>
+    
+    <br><br>
   </div>
 
 </body>
@@ -75,7 +89,7 @@
   <div style="color: black;">
     2019 -
     <script>
-    document.write(new Date().getFullYear());
+      document.write(new Date().getFullYear());
     </script>.
     Original idea by <a style="color: black;" href="https://www.reddit.com/user/antonlabz/">antonlabz</a>.
     Extended by BaqFish

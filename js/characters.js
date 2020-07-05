@@ -1,5 +1,26 @@
 function getCharacters() {
     var collection = [
+        { id: 1, character: "Alice", job: "C" },
+        { id: 2, character: "Snow White", job: "B" },
+        { id: 3, character: "Red Riding Hood", job: "R" },
+        { id: 4, character: "Snow White", job: "C" }
+    ]
+
+    collection.sort(function (x, y) {
+        return x.character.localeCompare(y.character);
+    });
+
+    var newCollection = [];
+    for (var i = 0; i < collection.length; ++i) {
+        newCollection.push(collection[i]["id"]);
+    }
+
+    return newCollection;
+}
+
+/*
+function getCharacters() {
+    var collection = [
         1,
         2,
         3,
@@ -318,3 +339,4 @@ function getCharacters() {
     ]
     return collection;
 }
+*/
