@@ -25,6 +25,33 @@ loadPage = function () {
                     icon.setAttribute('id', categories[cat][0][0] + categories[cat][1][x]);
                     icon.setAttribute('src', 'images/' + categories[cat][2] + (('0000' + categories[cat][1][x]).substr(categories[cat][3])) + '.png');
 
+                    if (categories[cat][0] == 'characters') {
+                        icon.addEventListener('click', function () {
+                            var img = $(this);
+                            var character = $('<img class="modalimage"/>');
+                            character.attr({
+                                src: img.attr('src'),
+                                alt: img.attr('alt'),
+                                title: img.attr('title')
+                            });
+
+                            var sprite = $('<img class="modalimage"/>');
+                            sprite.attr({
+                                src: img.attr('src').replace('CharacterImage', 'CharacterImageSmall'),
+                                alt: img.attr('alt'),
+                                title: img.attr('title')
+                            });
+
+                            var over = $('<div class="modalBackground"/>').text(' ').append(character).append(sprite).bind('click', function () {
+                                $(this).fadeOut(300, function () {
+                                    $(this).remove();
+                                });
+                            }).insertAfter(this).animate({
+                                'opacity': 1
+                            }, 300);
+                        });
+                    }
+
                     contain.appendChild(icon);
                 }
             }
